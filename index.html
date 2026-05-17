@@ -1,482 +1,553 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Contract Breakpoint Analysis</title>
-  <meta name="description" content="Contract Breakpoint Analysis is a pre-contract decision product. Pre-signature only. Written-only. No advice. No consulting." />
-  <style>
-    :root {
-      --max: 860px;
-      --pad: 22px;
-      --border: #e8e8e8;
-      --muted: #444;
-      --bg: #ffffff;
-      --soft: #fafafa;
-      --text: #111;
-    }
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Contract Breakpoint Analysis</title>
 
-    * { box-sizing: border-box; }
+<meta name="description" content="Contract Breakpoint Analysis is a pre-contract decision product. Pre-signature only. Written-only." />
 
-    html { scroll-behavior: smooth; }
+<style>
+:root{
+  --max: 860px;
+  --pad: 22px;
+  --border:#e8e8e8;
+  --muted:#444;
+  --bg:#fff;
+  --soft:#fafafa;
+  --text:#111;
+}
 
-    body {
-      margin: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
-      color: var(--text);
-      background: var(--bg);
-      line-height: 1.55;
-    }
+*{ box-sizing:border-box; }
 
-    a { color: inherit; text-decoration: none; }
-    a:hover { text-decoration: underline; }
+html { scroll-behavior:smooth; }
 
-    header {
-      position: sticky;
-      top: 0;
-      background: rgba(255,255,255,0.96);
-      backdrop-filter: blur(6px);
-      border-bottom: 1px solid var(--border);
-      z-index: 10;
-    }
+body{
+  margin:0;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
+  color:var(--text);
+  background:var(--bg);
+  line-height:1.55;
+}
 
-    .wrap {
-      max-width: var(--max);
-      margin: 0 auto;
-      padding: 16px var(--pad);
-    }
+a{
+  color:inherit;
+  text-decoration:none;
+}
 
-    .topbar {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 14px;
-      flex-wrap: wrap;
-    }
+a:hover{
+  text-decoration:underline;
+}
 
-    .brand { font-weight: 700; letter-spacing: 0.2px; }
+header{
+  position:sticky;
+  top:0;
+  background:rgba(255,255,255,.96);
+  border-bottom:1px solid var(--border);
+  z-index:10;
+}
 
-    nav {
-      display: flex;
-      gap: 14px;
-      flex-wrap: wrap;
-      font-size: 14px;
-      color: #222;
-    }
+.nav{
+  max-width:var(--max);
+  margin:auto;
+  padding:14px var(--pad);
+  display:flex;
+  gap:18px;
+  align-items:center;
+  flex-wrap:wrap;
+}
 
-    main { padding: 10px 0 34px; }
+.brand{
+  font-weight:600;
+  margin-right:auto;
+}
 
-    h1 {
-      font-size: 34px;
-      margin: 26px 0 10px;
-      letter-spacing: -0.2px;
-    }
+main{
+  max-width:var(--max);
+  margin:auto;
+  padding:36px var(--pad) 60px;
+}
 
-    h2 {
-      font-size: 20px;
-      margin: 30px 0 10px;
-      letter-spacing: -0.1px;
-    }
+.hero h1{
+  margin:0 0 12px;
+  font-size:34px;
+  line-height:1.1;
+}
 
-    p { margin: 10px 0; }
+.hero p{
+  margin:0 0 18px;
+}
 
-    .note { color: var(--muted); margin-top: 6px; }
+.section{
+  padding:34px 0;
+  border-top:1px solid var(--border);
+}
 
-    .card {
-      border: 1px solid var(--border);
-      background: var(--soft);
-      border-radius: 12px;
-      padding: 16px;
-      margin: 18px 0 6px;
-    }
+.section h2{
+  margin:0 0 14px;
+  font-size:24px;
+}
 
-    ul { margin: 10px 0 0 18px; }
-    li { margin: 6px 0; }
+ul{
+  padding-left:18px;
+}
 
-    .section {
-      border-top: 1px solid var(--border);
-      padding-top: 18px;
-      margin-top: 22px;
-    }
+.card{
+  background:var(--soft);
+  border:1px solid var(--border);
+  border-radius:14px;
+  padding:18px;
+}
 
-    .form-wrap { margin-top: 18px; }
+.form-wrap{
+  margin-top:18px;
+}
 
-    .field { margin-bottom: 16px; }
+.grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:14px;
+}
 
-    label {
-      display: block;
-      font-size: 14px;
-      font-weight: 600;
-      margin-bottom: 6px;
-    }
+@media (max-width:700px){
+  .grid{
+    grid-template-columns:1fr;
+  }
+}
 
-    input, select, textarea {
-      width: 100%;
-      border: 1px solid #d8d8d8;
-      background: #fff;
-      color: var(--text);
-      border-radius: 10px;
-      padding: 12px 14px;
-      font: inherit;
-      line-height: 1.4;
-    }
+.field{
+  display:flex;
+  flex-direction:column;
+  gap:6px;
+  margin-bottom:14px;
+}
 
-    textarea { min-height: 100px; resize: vertical; }
+label{
+  font-size:14px;
+  color:var(--muted);
+}
 
-    input:focus, select:focus, textarea:focus {
-      outline: none;
-      border-color: #999;
-    }
+input,select,textarea{
+  width:100%;
+  border:1px solid var(--border);
+  border-radius:10px;
+  padding:12px;
+  background:#fff;
+  font:inherit;
+  line-height:1.4;
+}
 
-    .grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 14px;
-    }
+textarea{
+  min-height:100px;
+  resize:vertical;
+}
 
-    .submit {
-      appearance: none;
-      border: 1px solid #111;
-      background: #111;
-      color: #fff;
-      border-radius: 10px;
-      padding: 12px 18px;
-      font: inherit;
-      font-weight: 600;
-      cursor: pointer;
-    }
+input:focus,
+select:focus,
+textarea:focus{
+  outline:none;
+  border-color:#999;
+}
 
-    .submit:hover { opacity: 0.88; }
-    .submit:disabled { opacity: 0.5; cursor: not-allowed; }
+.notice-signed{
+  display:none;
+  background:#fff8f0;
+  border:1px solid #f0d8b8;
+  border-radius:10px;
+  padding:14px 16px;
+  font-size:14px;
+  color:#7a4a10;
+  margin-bottom:16px;
+}
 
-    .notice-signed {
-      display: none;
-      background: #fff8f0;
-      border: 1px solid #f0d8b8;
-      border-radius: 10px;
-      padding: 14px 16px;
-      font-size: 14px;
-      color: #7a4a10;
-    }
+.submit{
+  border:none;
+  background:#111;
+  color:#fff;
+  border-radius:12px;
+  padding:14px 18px;
+  font:inherit;
+  cursor:pointer;
+}
 
-    .success-msg {
-      display: none;
-      background: #f0faf4;
-      border: 1px solid #b8dfc8;
-      border-radius: 10px;
-      padding: 16px;
-      font-size: 14px;
-      color: #1a5c35;
-      margin-top: 16px;
-    }
+.submit:hover{
+  opacity:.88;
+}
 
-    .error-msg {
-      display: none;
-      background: #fff0f0;
-      border: 1px solid #f0b8b8;
-      border-radius: 10px;
-      padding: 16px;
-      font-size: 14px;
-      color: #7a1010;
-      margin-top: 16px;
-    }
+.submit:disabled{
+  opacity:.5;
+  cursor:not-allowed;
+}
 
-    footer {
-      border-top: 1px solid var(--border);
-      color: var(--muted);
-      font-size: 14px;
-      padding: 18px 0;
-    }
+.success-msg,
+.error-msg{
+  display:none;
+  margin-top:16px;
+  padding:12px 14px;
+  border-radius:10px;
+  font-size:14px;
+}
 
-    @media (max-width: 700px) {
-      .grid { grid-template-columns: 1fr; }
-    }
+.success-msg{
+  background:#f3fff5;
+  border:1px solid #b8e6c0;
+}
 
-    @media (max-width: 520px) {
-      h1 { font-size: 28px; }
-      .wrap { padding: 14px 16px; }
-      .card { padding: 14px; }
-      nav { gap: 10px; }
-    }
-  </style>
+.error-msg{
+  background:#fff3f3;
+  border:1px solid #e5bcbc;
+}
+
+footer{
+  border-top:1px solid var(--border);
+  padding:26px var(--pad);
+  text-align:center;
+  color:#666;
+  font-size:14px;
+}
+</style>
 </head>
 
 <body>
-  <header>
-    <div class="wrap">
-      <div class="topbar">
-        <div class="brand">Contract Breakpoint Analysis</div>
-        <nav>
-          <a href="#what-exists">What Exists</a>
-          <a href="#why-contracts-fail">Why Contracts Fail</a>
-          <a href="#boundaries">Boundaries</a>
-          <a href="#contact">Contact</a>
-        </nav>
-      </div>
+
+<header>
+  <nav class="nav">
+    <div class="brand">Contract Breakpoint Analysis</div>
+    <a href="#exists">What Exists</a>
+    <a href="#why">Why Contracts Fail</a>
+    <a href="#boundaries">Boundaries</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<main>
+
+<section class="hero">
+  <h1>Contract Breakpoint Analysis</h1>
+
+  <p>
+    A pre-contract decision product. Used only before signing a specific commercial contract.
+  </p>
+
+  <p>
+    This product does not provide advice. It does not approve, veto, or recommend.
+    It declares structural inadmissibility relative to a survivability threshold.
+    The signatory alone decides whether to proceed.
+  </p>
+</section>
+
+<section id="exists" class="section">
+  <h2>What Exists</h2>
+
+  <p>
+    Contract Breakpoint Analysis evaluates whether an agreement, as written,
+    remains survivable under predictable execution stress.
+  </p>
+
+  <p>
+    It does not assess whether incidents will occur.
+    It assesses whether the contract survives those incidents.
+  </p>
+
+  <h3>What it is not</h3>
+
+  <ul>
+    <li>Not consulting</li>
+    <li>Not legal advice</li>
+    <li>Not contract drafting or renegotiation</li>
+    <li>Not an operational audit</li>
+    <li>Not post-signature applicable</li>
+    <li>Not reusable across contracts</li>
+  </ul>
+</section>
+
+<section id="why" class="section">
+  <h2>Why Contracts Fail Under Execution</h2>
+
+  <p>
+    Many commercial losses do not occur because a contract is illegal.
+    They occur when an operational incident happens and contractual protection
+    cannot be executed in time, in the correct form, or through the correct channel.
+  </p>
+
+  <p>
+    Rights are often lost silently:
+    deadlines are missed,
+    notices are misrouted,
+    escalation thresholds are misunderstood,
+    or documentation is incomplete at the moment it matters.
+  </p>
+
+  <p>
+    Contract Breakpoint Analysis exists to make that failure visible before signature,
+    when correction is still cheap and optionality still exists.
+  </p>
+</section>
+
+<section id="boundaries" class="section">
+  <h2>Boundaries</h2>
+
+  <ul>
+    <li><strong>Pre-signature only.</strong> If a contract is already signed, this product is not applicable.</li>
+    <li><strong>One contract = one analysis.</strong> Outputs are not transferable or reusable.</li>
+    <li><strong>No advice.</strong> No approvals, no recommendations, no vetoes.</li>
+    <li><strong>No methodology transfer.</strong> No templates or frameworks for internal replication.</li>
+    <li><strong>Written-only.</strong> No calls.</li>
+  </ul>
+</section>
+
+<section id="contact" class="section">
+  <h2>Pre-Signature Contact</h2>
+
+  <p>
+    Pre-signature only. Post-signature submissions are not processed through Contract Breakpoint Analysis.
+  </p>
+
+  <div class="card form-wrap">
+
+    <div class="field">
+      <label for="stage">Contract status</label>
+
+      <select id="stage" onchange="checkStage(this)">
+        <option value="">Select one</option>
+        <option value="before">Before signature</option>
+        <option value="signed">Already signed</option>
+      </select>
     </div>
-  </header>
 
-  <main class="wrap">
-    <h1>Contract Breakpoint Analysis</h1>
-
-    <p class="note">
-      A pre-contract decision product. Used only before signing a specific commercial contract.
-    </p>
-
-    <div class="card">
-      <p style="margin:0;">
-        This product does not provide advice. It does not approve, veto, or recommend.
-        It declares structural inadmissibility relative to a survivability threshold.
-        The signatory alone decides whether to proceed.
-      </p>
+    <div class="notice-signed" id="signed-notice">
+      This intake is not applicable post-signature.
     </div>
 
-    <section id="what-exists" class="section">
-      <h2>What Exists</h2>
-      <p>
-        Contract Breakpoint Analysis evaluates whether an agreement, as written, remains survivable
-        under predictable execution stress.
-      </p>
-      <p>
-        It does not assess whether incidents will occur.
-        It assesses whether the contract survives those incidents.
-      </p>
+    <div id="form-fields">
 
-      <h2 style="font-size:18px; margin-top:18px;">What it is not</h2>
-      <ul>
-        <li>Not consulting</li>
-        <li>Not legal advice</li>
-        <li>Not contract drafting or renegotiation</li>
-        <li>Not an operational audit</li>
-        <li>Not post-signature applicable</li>
-        <li>Not reusable across contracts</li>
-      </ul>
-    </section>
-
-    <section id="why-contracts-fail" class="section">
-      <h2>Why Contracts Fail Under Execution</h2>
-      <p>
-        Many commercial losses do not occur because a contract is illegal.
-        They occur when an operational incident happens and contractual protection
-        cannot be executed in time, in the correct form, or through the correct channel.
-      </p>
-      <p>
-        Rights are often lost silently: deadlines are missed, notices are misrouted, escalation thresholds are misunderstood,
-        or documentation is incomplete at the moment it matters.
-      </p>
-      <p>
-        Contract Breakpoint Analysis exists to make that failure visible <strong>before signature</strong>,
-        when correction is still cheap and optionality still exists.
-      </p>
-    </section>
-
-    <section id="boundaries" class="section">
-      <h2>Boundaries</h2>
-      <ul>
-        <li><strong>Pre-signature only.</strong> If a contract is already signed, this product is not applicable.</li>
-        <li><strong>One contract = one analysis.</strong> Outputs are not transferable or reusable.</li>
-        <li><strong>No advice.</strong> No approvals, no recommendations, no vetoes.</li>
-        <li><strong>No methodology transfer.</strong> No templates or frameworks for internal replication.</li>
-        <li><strong>Written-only.</strong> No calls.</li>
-      </ul>
-    </section>
-
-    <section id="contact" class="section">
-      <h2>Pre-Signature Contact</h2>
-      <p>Pre-signature only. Post-signature submissions are not processed through Contract Breakpoint Analysis.</p>
-
-      <div class="card form-wrap">
+      <div class="grid">
 
         <div class="field">
-          <label for="stage">Contract status</label>
-          <select id="stage" onchange="checkStage(this)">
+          <label for="contract-type">Contract type</label>
+
+          <input id="contract-type" type="text" placeholder="Supply, EPC, Charter, Services, Other" />
+        </div>
+
+        <div class="field">
+          <label for="jurisdiction">Jurisdiction(s)</label>
+
+          <input id="jurisdiction" type="text" placeholder="Country / governing law / forum" />
+        </div>
+
+      </div>
+
+      <div class="grid">
+
+        <div class="field">
+          <label for="stage-detail">Current stage</label>
+
+          <select id="stage-detail">
             <option value="">Select one</option>
-            <option value="before">Before signature</option>
-            <option value="signed">Already signed</option>
+            <option>Draft under review</option>
+            <option>Commercial alignment</option>
+            <option>Final legal review</option>
+            <option>Pending signature</option>
           </select>
         </div>
 
-        <div class="notice-signed" id="signed-notice">
-          This intake is not applicable post-signature.
+        <div class="field">
+          <label for="counterparty">Counterparty type</label>
+
+          <select id="counterparty">
+            <option value="">Select one</option>
+            <option>Supplier</option>
+            <option>Trader</option>
+            <option>Carrier</option>
+            <option>Contractor</option>
+            <option>State entity</option>
+            <option>Other</option>
+          </select>
         </div>
 
-        <div id="form-fields" style="display:none;">
-
-          <div class="grid">
-            <div class="field">
-              <label for="contract-type">Contract type</label>
-              <input id="contract-type" type="text" placeholder="Supply, EPC, Charter, Services, Other" />
-            </div>
-            <div class="field">
-              <label for="jurisdiction">Jurisdiction(s)</label>
-              <input id="jurisdiction" type="text" placeholder="Country / governing law / forum" />
-            </div>
-          </div>
-
-          <div class="grid">
-            <div class="field">
-              <label for="stage-detail">Current stage</label>
-              <select id="stage-detail">
-                <option value="">Select one</option>
-                <option>Draft</option>
-                <option>Negotiation</option>
-                <option>Final version pending signature</option>
-              </select>
-            </div>
-            <div class="field">
-              <label for="counterparty">Counterparty type</label>
-              <select id="counterparty">
-                <option value="">Select one</option>
-                <option>Corporate</option>
-                <option>State</option>
-                <option>Intermediary</option>
-                <option>Other</option>
-              </select>
-            </div>
-          </div>
-
-          <div class="field">
-            <label for="concern">Primary concern</label>
-            <textarea id="concern" placeholder="State the structural exposure briefly." required></textarea>
-          </div>
-
-          <div class="field">
-            <label for="breaks-first">What breaks first if this fails</label>
-            <textarea id="breaks-first" placeholder="Identify the first point of structural failure." required></textarea>
-          </div>
-
-          <div class="field">
-            <label for="failure">Operational consequence if this fails</label>
-            <textarea id="failure" placeholder="What happens operationally if the structure breaks under execution?"></textarea>
-          </div>
-
-          <div class="grid">
-            <div class="field">
-              <label for="time-to-sig">Time to signature</label>
-              <input id="time-to-sig" type="text" placeholder="e.g. 3 days / 2 weeks" />
-            </div>
-            <div class="field">
-              <label for="legal-review">Has legal reviewed this?</label>
-              <select id="legal-review">
-                <option value="">Select one</option>
-                <option>Yes</option>
-                <option>No</option>
-              </select>
-            </div>
-          </div>
-
-          <div class="field">
-            <label for="exposure">Financial exposure already committed</label>
-            <input id="exposure" type="text" placeholder="Yes / No / amount if applicable" />
-          </div>
-
-          <div class="grid">
-            <div class="field">
-              <label for="name">Name</label>
-              <input id="name" type="text" required />
-            </div>
-            <div class="field">
-              <label for="email">Email</label>
-              <input id="email" type="email" required />
-            </div>
-          </div>
-
-          <div class="field">
-            <label for="linkedin">LinkedIn or company URL</label>
-            <input id="linkedin" type="text" />
-          </div>
-
-          <button class="submit" id="submit-btn" onclick="submitForm()">Submit</button>
-
-          <div class="success-msg" id="success-msg">
-            Received. You will be contacted at the email provided if the exposure qualifies.
-          </div>
-          <div class="error-msg" id="error-msg">
-            Something went wrong. Please try again or write directly to hugo@contractbreakpoint.com.
-          </div>
-
-        </div>
       </div>
-    </section>
-  </main>
 
-  <footer>
-    <div class="wrap">© Contract Breakpoint Analysis</div>
-  </footer>
+      <div class="field">
+        <label for="concern">Primary concern</label>
 
-  <script>
-    function checkStage(sel) {
-      var notice = document.getElementById('signed-notice');
-      var fields = document.getElementById('form-fields');
-      if (sel.value === 'signed') {
-        notice.style.display = 'block';
-        fields.style.display = 'none';
-      } else if (sel.value === 'before') {
-        notice.style.display = 'none';
-        fields.style.display = 'block';
-      } else {
-        notice.style.display = 'none';
-        fields.style.display = 'none';
-      }
+        <textarea id="concern" placeholder="State the structural exposure briefly." required></textarea>
+      </div>
+
+      <div class="field">
+        <label for="breaks-first">What breaks first if this fails</label>
+
+        <textarea id="breaks-first" placeholder="Identify the first point of structural failure." required></textarea>
+      </div>
+
+      <div class="field">
+        <label for="failure">Operational consequence if this fails</label>
+
+        <textarea id="failure" placeholder="What happens operationally if the structure breaks under execution?"></textarea>
+      </div>
+
+      <div class="grid">
+
+        <div class="field">
+          <label for="time-to-sig">Time to signature</label>
+
+          <input id="time-to-sig" type="text" placeholder="e.g. 3 days / 2 weeks" />
+        </div>
+
+        <div class="field">
+          <label for="legal-review">Has legal reviewed this?</label>
+
+          <select id="legal-review">
+            <option value="">Select one</option>
+            <option>Yes</option>
+            <option>No</option>
+            <option>Unknown</option>
+          </select>
+        </div>
+
+      </div>
+
+      <div class="field">
+        <label for="exposure">Financial exposure already committed</label>
+
+        <input id="exposure" type="text" placeholder="Yes / No / amount if applicable" />
+      </div>
+
+      <div class="grid">
+
+        <div class="field">
+          <label for="name">Name</label>
+
+          <input id="name" type="text" required />
+        </div>
+
+        <div class="field">
+          <label for="email">Email</label>
+
+          <input id="email" type="email" required />
+        </div>
+
+      </div>
+
+      <div class="field">
+        <label for="linkedin">LinkedIn or company URL</label>
+
+        <input id="linkedin" type="text" />
+      </div>
+
+      <button class="submit" id="submit-btn" onclick="submitForm()">
+        Submit
+      </button>
+
+      <div class="success-msg" id="success-msg">
+        Submission received.
+      </div>
+
+      <div class="error-msg" id="error-msg">
+        Something went wrong. Please try again or write directly to hugo@contractbreakpoint.com.
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+</main>
+
+<footer>
+© Contract Breakpoint Analysis
+</footer>
+
+<script>
+function v(id){
+  return document.getElementById(id).value.trim();
+}
+
+function checkStage(sel){
+  var notice = document.getElementById('signed-notice');
+  var fields = document.getElementById('form-fields');
+
+  if(sel.value === 'signed'){
+    notice.style.display = 'block';
+    fields.style.display = 'none';
+  } else {
+    notice.style.display = 'none';
+    fields.style.display = 'block';
+  }
+}
+
+async function submitForm(){
+
+  var stage = v('stage');
+
+  if(!stage){
+    alert('Please select contract status.');
+    return;
+  }
+
+  if(stage === 'signed'){
+    return;
+  }
+
+  var name = v('name');
+  var email = v('email');
+  var concern = v('concern');
+  var breaks = v('breaks-first');
+
+  if(!name || !email || !concern || !breaks){
+    alert('Please fill in Name, Email, Primary concern, and What breaks first.');
+    return;
+  }
+
+  var btn = document.getElementById('submit-btn');
+
+  btn.disabled = true;
+  btn.textContent = 'Sending...';
+
+  var data = {
+    access_key: '77b93cfa-7294-4e76-a546-b2a7514fa040',
+    subject: 'Pre-Signature Exposure',
+    from_name: name,
+    email: email,
+    'Contract type': v('contract-type'),
+    'Jurisdiction': v('jurisdiction'),
+    'Current stage': v('stage-detail'),
+    'Counterparty type': v('counterparty'),
+    'Primary concern': concern,
+    'What breaks first': breaks,
+    'Operational consequence': v('failure'),
+    'Time to signature': v('time-to-sig'),
+    'Legal reviewed': v('legal-review'),
+    'Financial exposure': v('exposure'),
+    'LinkedIn / company URL': v('linkedin')
+  };
+
+  try{
+
+    var res = await fetch('https://api.web3forms.com/submit', {
+      method:'POST',
+      headers:{ 'Content-Type':'application/json' },
+      body:JSON.stringify(data)
+    });
+
+    var json = await res.json();
+
+    if(json.success){
+      document.getElementById('success-msg').style.display = 'block';
+      document.getElementById('error-msg').style.display = 'none';
+      btn.style.display = 'none';
+    } else {
+      throw new Error('failed');
     }
 
-    function v(id) {
-      return document.getElementById(id).value.trim();
-    }
+  } catch(e){
 
-    async function submitForm() {
-      var name = v('name');
-      var email = v('email');
-      var concern = v('concern');
-      var breaks = v('breaks-first');
+    document.getElementById('error-msg').style.display = 'block';
 
-      if (!name || !email || !concern || !breaks) {
-        alert('Please fill in Name, Email, Primary concern, and What breaks first.');
-        return;
-      }
+    btn.disabled = false;
+    btn.textContent = 'Submit';
+  }
+}
+</script>
 
-      var btn = document.getElementById('submit-btn');
-      btn.disabled = true;
-      btn.textContent = 'Sending...';
-
-      var data = {
-        access_key: '77b93cfa-7294-4e76-a546-b2a7514fa040',
-        subject: 'Pre-Signature Exposure',
-        from_name: name,
-        email: email,
-        'Contract type': v('contract-type'),
-        'Jurisdiction': v('jurisdiction'),
-        'Current stage': v('stage-detail'),
-        'Counterparty type': v('counterparty'),
-        'Primary concern': concern,
-        'What breaks first': breaks,
-        'Operational consequence': v('failure'),
-        'Time to signature': v('time-to-sig'),
-        'Legal reviewed': v('legal-review'),
-        'Financial exposure': v('exposure'),
-        'LinkedIn / company URL': v('linkedin')
-      };
-
-      try {
-        var res = await fetch('https://api.web3forms.com/submit', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(data)
-        });
-        var json = await res.json();
-        if (json.success) {
-          document.getElementById('success-msg').style.display = 'block';
-          document.getElementById('error-msg').style.display = 'none';
-          btn.style.display = 'none';
-        } else {
-          throw new Error('failed');
-        }
-      } catch (e) {
-        document.getElementById('error-msg').style.display = 'block';
-        btn.disabled = false;
-        btn.textContent = 'Submit';
-      }
-    }
-  </script>
 </body>
 </html>
