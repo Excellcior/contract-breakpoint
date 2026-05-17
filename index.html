@@ -463,15 +463,24 @@ function v(id){
 }
 
 function checkStage(sel){
+
   var notice = document.getElementById('signed-notice');
   var fields = document.getElementById('form-fields');
 
-  if(sel.value === 'signed'){
-    notice.style.display = 'block';
-    fields.style.display = 'none';
-  } else {
+  if(sel.value === 'before'){
+
     notice.style.display = 'none';
     fields.style.display = 'block';
+
+  } else if(sel.value === 'signed'){
+
+    notice.style.display = 'block';
+    fields.style.display = 'none';
+
+  } else {
+
+    notice.style.display = 'none';
+    fields.style.display = 'none';
   }
 }
 
