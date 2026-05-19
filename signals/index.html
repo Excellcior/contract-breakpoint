@@ -4,85 +4,161 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-<title>Observed Execution Conditions</title>
+<title>Execution Signals</title>
 
 <style>
 :root{
-  --max: 860px;
-  --pad: 22px;
-  --border:#e8e8e8;
-  --muted:#555;
-  --bg:#fff;
-  --soft:#fafafa;
-  --text:#111;
+  --max: 980px;
+  --pad: 24px;
+  --bg:#06090a;
+  --panel:#080d0f;
+  --line:#1c272b;
+  --line-soft:#11191c;
+  --text:#d8e0df;
+  --muted:#7f8f91;
+  --dim:#4d5b5e;
+  --accent:#b9c7c6;
 }
 
 *{
   box-sizing:border-box;
 }
 
+html{
+  background:var(--bg);
+}
+
 body{
   margin:0;
-  background:var(--bg);
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.025), transparent 240px),
+    radial-gradient(circle at 80% 0%, rgba(120,150,150,.06), transparent 360px),
+    var(--bg);
   color:var(--text);
-  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
-  line-height:1.6;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+  line-height:1.65;
 }
 
 main{
   max-width:var(--max);
   margin:auto;
-  padding:42px var(--pad) 80px;
+  padding:42px var(--pad) 88px;
+}
+
+header{
+  border-bottom:1px solid var(--line);
+  padding-bottom:28px;
+  margin-bottom:54px;
+}
+
+.kicker{
+  color:var(--muted);
+  font-size:11px;
+  letter-spacing:.32em;
+  text-transform:uppercase;
+  margin-bottom:38px;
 }
 
 h1{
-  margin:0 0 10px;
-  font-size:34px;
-  line-height:1.1;
+  margin:0;
+  font-size:42px;
+  line-height:1.05;
+  letter-spacing:.04em;
+  text-transform:uppercase;
+  font-weight:500;
 }
 
 .updated{
-  color:#777;
-  font-size:14px;
-  margin-bottom:28px;
+  color:var(--dim);
+  font-size:12px;
+  margin-top:20px;
+  letter-spacing:.14em;
+  text-transform:uppercase;
 }
 
 .intro{
+  max-width:660px;
+  margin-top:42px;
   color:var(--muted);
-  margin-bottom:42px;
+  font-size:15px;
+}
+
+.group{
+  margin-top:62px;
 }
 
 .group-title{
-  border-top:1px solid var(--border);
-  padding-top:34px;
-  margin-top:20px;
-  margin-bottom:10px;
-  font-size:15px;
-  letter-spacing:.04em;
-  text-transform:uppercase;
-  color:#666;
-}
-
-.section{
-  border-top:1px solid var(--border);
-  padding:30px 0;
-}
-
-.section h2{
-  margin:0 0 10px;
-  font-size:22px;
-}
-
-.section p{
-  margin:0;
-}
-
-footer{
-  border-top:1px solid var(--border);
-  margin-top:50px;
+  border-top:1px solid var(--line);
   padding-top:24px;
-  color:#666;
+  margin-bottom:28px;
+  font-size:11px;
+  letter-spacing:.34em;
+  text-transform:uppercase;
+  color:var(--dim);
+}
+
+.condition{
+  border-top:1px solid var(--line-soft);
+  padding:26px 0 30px;
+  display:grid;
+  grid-template-columns: 230px 1fr;
+  gap:36px;
+}
+
+.condition h2{
+  margin:0;
+  font-size:13px;
+  line-height:1.5;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:var(--accent);
+  font-weight:500;
+}
+
+.condition p{
+  margin:0;
+  max-width:620px;
+  color:var(--muted);
+  font-size:15px;
+}
+
+.footer{
+  border-top:1px solid var(--line);
+  margin-top:72px;
+  padding-top:28px;
+  color:var(--dim);
+  font-size:12px;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+}
+
+.contact{
+  margin-top:18px;
+  color:var(--muted);
+  text-transform:none;
+  letter-spacing:0;
   font-size:14px;
+}
+
+a{
+  color:var(--text);
+  text-decoration:none;
+  border-bottom:1px solid var(--dim);
+}
+
+@media (max-width: 720px){
+  main{
+    padding:32px 20px 70px;
+  }
+
+  h1{
+    font-size:34px;
+  }
+
+  .condition{
+    grid-template-columns:1fr;
+    gap:12px;
+  }
 }
 </style>
 </head>
@@ -91,96 +167,87 @@ footer{
 
 <main>
 
-<h1>Observed Execution Conditions</h1>
+<header>
+  <div class="kicker">Contract Breakpoint Analysis / Signals</div>
 
-<div class="updated">
-Updated: 17 May 2026
-</div>
+  <h1>Execution<br>Signals</h1>
 
-<p class="intro">
-Recurring execution conditions that repeatedly degrade contractual survivability across operational environments.
-</p>
+  <div class="updated">Updated 17 May 2026</div>
 
-<div class="group-title">
-Current Execution Conditions
-</div>
+  <p class="intro">
+    Recurring execution conditions observed across operational environments where timing, sequence, notice and recoverability begin to separate.
+  </p>
+</header>
 
-<div class="section">
-<h2>Gulf transit custody instability</h2>
+<section class="group">
+  <div class="group-title">Current pressure</div>
 
-<p>
-Forced vessel diversion and maritime seizure activity continue degrading routing integrity and downstream execution continuity across Gulf-linked movements.
-</p>
-</div>
+  <div class="condition">
+    <h2>Gulf transit custody instability</h2>
+    <p>
+      Routing continuity remains exposed where transit control, vessel custody and downstream timing no longer move as one sequence.
+    </p>
+  </div>
 
-<div class="section">
-<h2>Western Cape export sequencing disruption</h2>
+  <div class="condition">
+    <h2>Western Cape export sequencing disruption</h2>
+    <p>
+      Landside interruption continues to affect container positioning, terminal delivery timing and vessel cutoff reliability.
+    </p>
+  </div>
 
-<p>
-Flood-related landside disruption continues impairing container positioning, terminal delivery timing and booked vessel cutoff reliability.
-</p>
-</div>
+  <div class="condition">
+    <h2>Asia-Europe allocation compression</h2>
+    <p>
+      Restricted vessel space and blanked sailings continue forcing cargo into rolling sequences before seasonal pressure fully stabilizes.
+    </p>
+  </div>
+</section>
 
-<div class="section">
-<h2>Asia-Europe pre-peak allocation compression</h2>
+<section class="group">
+  <div class="group-title">Recurring conditions</div>
 
-<p>
-Blanked sailings and restricted vessel space continue forcing cargo into rolling loops ahead of early seasonal demand pressure.
-</p>
-</div>
+  <div class="condition">
+    <h2>Corridor instability</h2>
+    <p>
+      Physical movement may continue while routing assumptions, timing integrity and escalation structures stop aligning.
+    </p>
+  </div>
 
-<div class="group-title">
-Recurring Structural Conditions
-</div>
+  <div class="condition">
+    <h2>Notice compression</h2>
+    <p>
+      Operational pressure reduces the time available to preserve rights through valid notice, documentation and escalation sequencing.
+    </p>
+  </div>
 
-<div class="section">
-<h2>Corridor Instability</h2>
+  <div class="condition">
+    <h2>Clearance dependency</h2>
+    <p>
+      Administrative gates can become the controlling execution constraint before liability stabilizes across counterparties.
+    </p>
+  </div>
 
-<p>
-Physical execution continues while routing assumptions,
-timing integrity and escalation structures stop aligning with operational reality.
-</p>
-</div>
+  <div class="condition">
+    <h2>Recoverability fragmentation</h2>
+    <p>
+      Operational, legal and insurance recovery paths may diverge before accountability converges.
+    </p>
+  </div>
 
-<div class="section">
-<h2>Notice Compression</h2>
+  <div class="condition">
+    <h2>Berth synchronization failure</h2>
+    <p>
+      Transit continuity does not guarantee downstream berth, discharge or feeder alignment.
+    </p>
+  </div>
+</section>
 
-<p>
-Operational pressure compresses the time available to preserve rights through valid notice,
-documentation and escalation sequencing.
-</p>
-</div>
-
-<div class="section">
-<h2>Clearance Dependency</h2>
-
-<p>
-Administrative gates become the real execution constraint before liability stabilizes across counterparties.
-</p>
-</div>
-
-<div class="section">
-<h2>Recoverability Fragmentation</h2>
-
-<p>
-Operational, legal and insurance recovery paths diverge before accountability converges.
-</p>
-</div>
-
-<div class="section">
-<h2>Berth Synchronization Failure</h2>
-
-<p>
-Transit continuity no longer guarantees downstream berth,
-discharge or feeder alignment.
-</p>
-</div>
-
-<footer>
-Post-signature procedural exposure only.<br><br>
-
-Operational written intake:<br>
-hugo@contractbreakpoint.com
+<footer class="footer">
+  Static operational signal surface.
+  <div class="contact">
+    Written intake: <a href="mailto:hugo@contractbreakpoint.com">hugo@contractbreakpoint.com</a>
+  </div>
 </footer>
 
 </main>
