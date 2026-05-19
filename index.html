@@ -3,31 +3,49 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
+
 <title>Contract Breakpoint Analysis</title>
 
-<meta name="description" content="Contract Breakpoint Analysis is a pre-contract decision product. Pre-signature only. Written-only." />
+<meta name="description" content="Contract Breakpoint Analysis is a pre-signature admissibility surface for execution-sensitive commercial agreements." />
 
 <style>
 :root{
-  --max: 860px;
-  --pad: 22px;
-  --border:#e8e8e8;
-  --muted:#444;
-  --bg:#fff;
-  --soft:#fafafa;
-  --text:#111;
+  --max: 980px;
+  --pad: 24px;
+
+  --bg:#06090a;
+  --panel:#080d0f;
+
+  --line:#1c272b;
+  --line-soft:#11191c;
+
+  --text:#d8e0df;
+  --muted:#7f8f91;
+  --dim:#4d5b5e;
+  --accent:#b9c7c6;
 }
 
-*{ box-sizing:border-box; }
+*{
+  box-sizing:border-box;
+}
 
-html { scroll-behavior:smooth; }
+html{
+  background:var(--bg);
+  scroll-behavior:smooth;
+}
 
 body{
   margin:0;
-  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.025), transparent 240px),
+    radial-gradient(circle at 80% 0%, rgba(120,150,150,.06), transparent 360px),
+    var(--bg);
+
   color:var(--text);
-  background:var(--bg);
-  line-height:1.55;
+
+  font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono",monospace;
+
+  line-height:1.65;
 }
 
 a{
@@ -35,22 +53,26 @@ a{
   text-decoration:none;
 }
 
-a:hover{
-  text-decoration:underline;
-}
-
 header{
   position:sticky;
   top:0;
-  background:rgba(255,255,255,.96);
-  border-bottom:1px solid var(--border);
-  z-index:10;
+
+  background:rgba(6,9,10,.94);
+
+  border-bottom:1px solid var(--line);
+
+  z-index:20;
+
+  backdrop-filter:blur(8px);
 }
 
 .nav{
   max-width:var(--max);
+
   margin:auto;
-  padding:14px var(--pad);
+
+  padding:16px var(--pad);
+
   display:flex;
   gap:18px;
   align-items:center;
@@ -58,82 +80,225 @@ header{
 }
 
 .brand{
-  font-weight:600;
   margin-right:auto;
+
+  color:var(--text);
+
+  font-size:13px;
+
+  letter-spacing:.18em;
+
+  text-transform:uppercase;
+}
+
+.nav a{
+  color:var(--muted);
+
+  font-size:12px;
+
+  letter-spacing:.16em;
+
+  text-transform:uppercase;
+}
+
+.nav a:hover{
+  color:var(--text);
 }
 
 main{
   max-width:var(--max);
+
   margin:auto;
-  padding:36px var(--pad) 60px;
+
+  padding:52px var(--pad) 90px;
+}
+
+.hero{
+  border-bottom:1px solid var(--line);
+
+  padding-bottom:44px;
+
+  margin-bottom:56px;
+}
+
+.kicker{
+  color:var(--muted);
+
+  font-size:11px;
+
+  letter-spacing:.34em;
+
+  text-transform:uppercase;
+
+  margin-bottom:40px;
 }
 
 .hero h1{
-  margin:0 0 12px;
-  font-size:34px;
-  line-height:1.1;
+  margin:0;
+
+  font-size:48px;
+
+  line-height:1.02;
+
+  letter-spacing:.04em;
+
+  text-transform:uppercase;
+
+  font-weight:500;
 }
 
-.hero p{
+.hero-intro{
+  margin-top:42px;
+
+  max-width:700px;
+
+  color:var(--muted);
+
+  font-size:15px;
+}
+
+.hero-intro p{
   margin:0 0 18px;
 }
 
 .section{
-  padding:34px 0;
-  border-top:1px solid var(--border);
+  border-top:1px solid var(--line);
+
+  padding:34px 0 38px;
+}
+
+.section-label{
+  color:var(--dim);
+
+  font-size:11px;
+
+  letter-spacing:.34em;
+
+  text-transform:uppercase;
+
+  margin-bottom:26px;
 }
 
 .section h2{
-  margin:0 0 14px;
+  margin:0 0 18px;
+
   font-size:24px;
+
+  line-height:1.2;
+
+  font-weight:500;
 }
 
-ul{
-  padding-left:18px;
+.section p{
+  max-width:720px;
+
+  color:var(--muted);
+
+  margin:0 0 18px;
 }
 
-.card{
-  background:var(--soft);
-  border:1px solid var(--border);
-  border-radius:14px;
-  padding:18px;
-}
+.statement{
+  color:var(--text);
 
-.form-wrap{
-  margin-top:18px;
+  font-size:17px;
+
+  line-height:1.7;
 }
 
 .grid{
   display:grid;
+
   grid-template-columns:1fr 1fr;
-  gap:14px;
+
+  gap:18px;
 }
 
-@media (max-width:700px){
-  .grid{
-    grid-template-columns:1fr;
-  }
+.block{
+  border-top:1px solid var(--line-soft);
+
+  padding-top:18px;
+}
+
+.block-title{
+  color:var(--accent);
+
+  font-size:12px;
+
+  letter-spacing:.18em;
+
+  text-transform:uppercase;
+
+  margin-bottom:12px;
+}
+
+.block p{
+  margin:0;
+
+  color:var(--muted);
+}
+
+.conditions-link{
+  margin-top:14px;
+
+  color:var(--dim);
+
+  font-size:12px;
+
+  letter-spacing:.14em;
+
+  text-transform:uppercase;
+}
+
+.conditions-link a{
+  color:var(--text);
+}
+
+.card{
+  margin-top:26px;
+
+  border:1px solid var(--line);
+
+  background:rgba(255,255,255,.015);
+
+  padding:22px;
+
+  border-radius:14px;
 }
 
 .field{
   display:flex;
   flex-direction:column;
-  gap:6px;
-  margin-bottom:14px;
+
+  gap:8px;
+
+  margin-bottom:16px;
 }
 
 label{
-  font-size:14px;
   color:var(--muted);
+
+  font-size:13px;
+
+  letter-spacing:.04em;
 }
 
-input,select,textarea{
+input,
+select,
+textarea{
   width:100%;
-  border:1px solid var(--border);
+
+  border:1px solid var(--line);
+
   border-radius:10px;
-  padding:12px;
-  background:#fff;
+
+  padding:13px 14px;
+
+  background:#0c1214;
+
+  color:var(--text);
+
   font:inherit;
+
   line-height:1.4;
 }
 
@@ -146,32 +311,45 @@ input:focus,
 select:focus,
 textarea:focus{
   outline:none;
-  border-color:#999;
+  border-color:#4d5b5e;
 }
 
 .notice-signed{
   display:none;
-  background:#fff8f0;
-  border:1px solid #f0d8b8;
+
+  border:1px solid #57442d;
+
+  background:#17120c;
+
+  color:#d7b98a;
+
   border-radius:10px;
+
   padding:14px 16px;
+
   font-size:14px;
-  color:#7a4a10;
-  margin-bottom:16px;
+
+  margin-bottom:18px;
 }
 
 .submit{
   border:none;
-  background:#111;
-  color:#fff;
+
+  background:#d8e0df;
+
+  color:#06090a;
+
   border-radius:12px;
+
   padding:14px 18px;
+
   font:inherit;
+
   cursor:pointer;
 }
 
 .submit:hover{
-  opacity:.88;
+  opacity:.9;
 }
 
 .submit:disabled{
@@ -182,28 +360,65 @@ textarea:focus{
 .success-msg,
 .error-msg{
   display:none;
+
   margin-top:16px;
+
   padding:12px 14px;
+
   border-radius:10px;
+
   font-size:14px;
 }
 
 .success-msg{
-  background:#f3fff5;
-  border:1px solid #b8e6c0;
+  border:1px solid #355742;
+
+  background:#0f1713;
+
+  color:#b9d7c3;
 }
 
 .error-msg{
-  background:#fff3f3;
-  border:1px solid #e5bcbc;
+  border:1px solid #5c3434;
+
+  background:#170f0f;
+
+  color:#d8b4b4;
 }
 
 footer{
-  border-top:1px solid var(--border);
-  padding:26px var(--pad);
+  border-top:1px solid var(--line);
+
+  padding:28px var(--pad);
+
   text-align:center;
-  color:#666;
-  font-size:14px;
+
+  color:var(--dim);
+
+  font-size:12px;
+
+  letter-spacing:.14em;
+
+  text-transform:uppercase;
+}
+
+@media (max-width:760px){
+
+  main{
+    padding:42px 20px 80px;
+  }
+
+  .hero h1{
+    font-size:38px;
+  }
+
+  .grid{
+    grid-template-columns:1fr;
+  }
+
+  .nav{
+    gap:12px;
+  }
 }
 </style>
 </head>
@@ -212,99 +427,217 @@ footer{
 
 <header>
   <nav class="nav">
-    <div class="brand">Contract Breakpoint Analysis</div>
-  <a href="#exists">What Exists</a>
-<a href="#why">Why Contracts Fail</a>
-<a href="/signals/">Signals</a>
-<a href="#boundaries">Boundaries</a>
-<a href="#contact">Contact</a>
+
+    <div class="brand">
+      Contract Breakpoint Analysis
+    </div>
+
+    <a href="#exists">Scope</a>
+    <a href="#failure">Failure</a>
+    <a href="/signals/">Signals</a>
+    <a href="#boundaries">Boundaries</a>
+    <a href="#contact">Contact</a>
+
   </nav>
 </header>
 
 <main>
 
 <section class="hero">
-  <h1>Contract Breakpoint Analysis</h1>
 
-  <p>
-    A pre-contract decision product. Used only before signing a specific commercial contract.
-  </p>
+  <div class="kicker">
+    Pre-signature admissibility surface
+  </div>
 
-  <p>
-    This product does not provide advice. It does not approve, veto, or recommend.
-    It declares structural inadmissibility relative to a survivability threshold.
-    The signatory alone decides whether to proceed.
-  </p>
+  <h1>
+    Contract<br>
+    Breakpoint<br>
+    Analysis
+  </h1>
+
+  <div class="hero-intro">
+
+    <p class="statement">
+      Execution continues.<br>
+      Contractual protection frequently does not.
+    </p>
+
+    <p>
+      Contract Breakpoint Analysis evaluates whether a commercial agreement remains structurally survivable under predictable execution pressure before signature.
+    </p>
+
+    <p>
+      This product does not approve, reject or recommend. It identifies inadmissible structural exposure relative to execution continuity, timing integrity and procedural recoverability.
+    </p>
+
+  </div>
+
 </section>
 
 <section id="exists" class="section">
-  <h2>What Exists</h2>
 
-  <p>
-    Contract Breakpoint Analysis evaluates whether an agreement, as written,
-    remains survivable under predictable execution stress.
-  </p>
+  <div class="section-label">
+    Scope
+  </div>
 
-  <p>
-    It does not assess whether incidents will occur.
-    It assesses whether the contract survives those incidents.
-  </p>
+  <h2>
+    What exists
+  </h2>
 
-  <h3>What it is not</h3>
+  <div class="grid">
 
-  <ul>
-    <li>Not consulting</li>
-    <li>Not legal advice</li>
-    <li>Not contract drafting or renegotiation</li>
-    <li>Not an operational audit</li>
-    <li>Not post-signature applicable</li>
-    <li>Not reusable across contracts</li>
-  </ul>
+    <div class="block">
+
+      <div class="block-title">
+        Pre-signature only
+      </div>
+
+      <p>
+        Once a contract is signed, structural optionality narrows rapidly under operational movement.
+      </p>
+
+    </div>
+
+    <div class="block">
+
+      <div class="block-title">
+        Execution survivability
+      </div>
+
+      <p>
+        The analysis evaluates whether contractual protection remains executable when operational continuity degrades.
+      </p>
+
+    </div>
+
+    <div class="block">
+
+      <div class="block-title">
+        Non-transferable
+      </div>
+
+      <p>
+        One agreement. One analysis. Outputs are not reusable across instruments or counterparties.
+      </p>
+
+    </div>
+
+    <div class="block">
+
+      <div class="block-title">
+        Written-only
+      </div>
+
+      <p>
+        No calls. No workshops. No methodology transfer.
+      </p>
+
+    </div>
+
+  </div>
+
 </section>
 
-<section id="why" class="section">
-  <h2>Why Contracts Fail Under Execution</h2>
+<section id="failure" class="section">
+
+  <div class="section-label">
+    Structural failure
+  </div>
+
+  <h2>
+    Why agreements degrade under execution pressure
+  </h2>
 
   <p>
-    Many commercial losses do not occur because a contract is illegal.
-    They occur when an operational incident happens and contractual protection
-    cannot be executed in time, in the correct form, or through the correct channel.
+    Commercial loss frequently begins before formal breach. Rights degrade through timing failure, notice-chain instability, procedural compression and fragmented escalation continuity.
   </p>
 
   <p>
-    Rights are often lost silently:
-    deadlines are missed,
-    notices are misrouted,
-    escalation thresholds are misunderstood,
-    or documentation is incomplete at the moment it matters.
+    Execution movement does not pause while contractual protection is being interpreted, assembled or routed through the correct procedural channel.
   </p>
 
-  <p>
-    Contract Breakpoint Analysis exists to make that failure visible before signature,
-    when correction is still cheap and optionality still exists.
-  </p>
+  <div class="conditions-link">
+    Observed operational conditions:
+    <a href="/signals/">signals</a>
+  </div>
+
 </section>
 
 <section id="boundaries" class="section">
-  <h2>Boundaries</h2>
 
-  <ul>
-    <li><strong>Pre-signature only.</strong> If a contract is already signed, this product is not applicable.</li>
-    <li><strong>One contract = one analysis.</strong> Outputs are not transferable or reusable.</li>
-    <li><strong>No advice.</strong> No approvals, no recommendations, no vetoes.</li>
-    <li><strong>No methodology transfer.</strong> No templates or frameworks for internal replication.</li>
-    <li><strong>Written-only.</strong> No calls.</li>
-  </ul>
+  <div class="section-label">
+    Boundaries
+  </div>
+
+  <div class="grid">
+
+    <div class="block">
+
+      <div class="block-title">
+        Not consulting
+      </div>
+
+      <p>
+        No operational advisory, negotiation support or implementation work.
+      </p>
+
+    </div>
+
+    <div class="block">
+
+      <div class="block-title">
+        Not legal advice
+      </div>
+
+      <p>
+        No legal opinion, approval, veto or enforceability determination.
+      </p>
+
+    </div>
+
+    <div class="block">
+
+      <div class="block-title">
+        No post-signature application
+      </div>
+
+      <p>
+        Signed agreements fall outside the admissibility perimeter of this product.
+      </p>
+
+    </div>
+
+    <div class="block">
+
+      <div class="block-title">
+        No replication
+      </div>
+
+      <p>
+        Internal frameworks, templates and methodological transfer are excluded.
+      </p>
+
+    </div>
+
+  </div>
+
 </section>
 
 <section id="contact" class="section">
-  <h2>Pre-Signature Contact</h2>
+
+  <div class="section-label">
+    Contact
+  </div>
+
+  <h2>
+    Pre-signature contact
+  </h2>
 
   <p>
-    Pre-signature only. Post-signature submissions are not processed through Contract Breakpoint Analysis.
+    Post-signature submissions are not processed through Contract Breakpoint Analysis.
   </p>
 
-  <div class="card form-wrap">
+  <div class="card">
 
     <div class="field">
       <label for="stage">Contract status</label>
@@ -450,12 +783,13 @@ footer{
     </div>
 
   </div>
+
 </section>
 
 </main>
 
 <footer>
-© Contract Breakpoint Analysis
+  Contract Breakpoint Analysis
 </footer>
 
 <script>
