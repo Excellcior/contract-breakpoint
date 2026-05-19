@@ -34,8 +34,11 @@ body{
     linear-gradient(180deg, rgba(255,255,255,.025), transparent 240px),
     radial-gradient(circle at 80% 0%, rgba(120,150,150,.06), transparent 360px),
     var(--bg);
+
   color:var(--text);
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+
+  font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono",monospace;
+
   line-height:1.65;
 }
 
@@ -101,7 +104,7 @@ h1{
   border-top:1px solid var(--line-soft);
   padding:26px 0 30px;
   display:grid;
-  grid-template-columns: 230px 1fr;
+  grid-template-columns:230px 1fr;
   gap:36px;
 }
 
@@ -140,13 +143,29 @@ h1{
   font-size:14px;
 }
 
+.signal-meta{
+  margin-top:26px;
+  color:#7f8f91;
+  font-size:11px;
+  letter-spacing:.08em;
+  text-transform:none;
+  line-height:1.7;
+}
+
+.signal-meta a{
+  color:#d8e0df;
+  text-decoration:none;
+  border-bottom:1px solid #4d5b5e;
+}
+
 a{
   color:var(--text);
   text-decoration:none;
   border-bottom:1px solid var(--dim);
 }
 
-@media (max-width: 720px){
+@media (max-width:720px){
+
   main{
     padding:32px 20px 70px;
   }
@@ -168,22 +187,35 @@ a{
 <main>
 
 <header>
-  <div class="kicker">Contract Breakpoint Analysis / Signals</div>
 
-  <h1>Execution<br>Signals</h1>
+  <div class="kicker">
+    Contract Breakpoint Analysis / Signals
+  </div>
 
-  <div class="updated">Updated 19 May 2026</div>
+  <h1>
+    Execution<br>
+    Signals
+  </h1>
+
+  <div class="updated">
+    Updated 19 May 2026
+  </div>
 
   <p class="intro">
     Execution conditions continue moving while contractual structures remain fixed.
   </p>
+
 </header>
 
 <section class="group">
-  <div class="group-title">Current conditions</div>
+
+  <div class="group-title">
+    Current conditions
+  </div>
 
   <div class="condition">
     <h2>Strait of Hormuz</h2>
+
     <p>
       Selective transit continuity persists under escort-dependent routing. Transit staging continues expanding across adjacent basins.
     </p>
@@ -191,6 +223,7 @@ a{
 
   <div class="condition">
     <h2>Red Sea / Jeddah</h2>
+
     <p>
       Landside booking suspensions continue compounding rerouting pressure across regional discharge corridors.
     </p>
@@ -198,6 +231,7 @@ a{
 
   <div class="condition">
     <h2>Persian Gulf corridors</h2>
+
     <p>
       Service suspensions and procedural fragmentation continue disrupting downstream transshipment continuity.
     </p>
@@ -205,6 +239,7 @@ a{
 
   <div class="condition">
     <h2>Qingdao / Ningbo</h2>
+
     <p>
       Persistent vessel bunching continues compressing berth availability and landside execution timing.
     </p>
@@ -212,17 +247,23 @@ a{
 
   <div class="condition">
     <h2>Mombasa / Tema</h2>
+
     <p>
       Equipment imbalance and off-window arrivals continue extending transshipment queue instability.
     </p>
   </div>
+
 </section>
 
 <section class="group">
-  <div class="group-title">Persistent conditions</div>
+
+  <div class="group-title">
+    Persistent conditions
+  </div>
 
   <div class="condition">
     <h2>Allocation compression</h2>
+
     <p>
       Allocation continuity weakens before vessel availability stabilizes.
     </p>
@@ -230,6 +271,7 @@ a{
 
   <div class="condition">
     <h2>Notice compression</h2>
+
     <p>
       Available procedural time narrows under operational pressure.
     </p>
@@ -237,6 +279,7 @@ a{
 
   <div class="condition">
     <h2>Clearance dependency</h2>
+
     <p>
       Administrative dependency continues controlling execution continuity.
     </p>
@@ -244,6 +287,7 @@ a{
 
   <div class="condition">
     <h2>Recoverability fragmentation</h2>
+
     <p>
       Recovery paths separate before accountability stabilizes.
     </p>
@@ -251,17 +295,37 @@ a{
 
   <div class="condition">
     <h2>Berth synchronization failure</h2>
+
     <p>
       Transit continuity does not guarantee downstream berth, discharge or feeder alignment.
     </p>
   </div>
+
 </section>
 
 <footer class="footer">
+
   Operational conditions subject to change.
+
   <div class="contact">
-    Written intake: <a href="mailto:hugo@contractbreakpoint.com">hugo@contractbreakpoint.com</a>
+    Written intake:
+    <a href="mailto:hugo@contractbreakpoint.com">
+      hugo@contractbreakpoint.com
+    </a>
   </div>
+
+  <div class="signal-meta">
+
+    External signal surface maintained through
+    <a
+      href="https://x.com/contractsignal"
+      target="_blank"
+    >
+      @contractsignal
+    </a>
+
+  </div>
+
 </footer>
 
 </main>
