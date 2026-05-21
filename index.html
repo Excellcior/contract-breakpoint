@@ -670,10 +670,11 @@ footer{
     </div>
 
     <div class="notice-signed" id="signed-notice">
-      This intake is not applicable post-signature.
+      Pre-signature admissibility review is no longer applicable.<br><br>
+      If operational continuity has already degraded, describe the current execution condition briefly.
     </div>
 
-    <div id="form-fields" style="display:none;">
+    <div id="before-fields" style="display:none;">
 
       <div class="grid">
 
@@ -694,14 +695,16 @@ footer{
       <div class="grid">
 
         <div class="field">
-          <label for="stage-detail">Current stage</label>
+          <label for="stage-detail">Execution timing relative to signature</label>
 
           <select id="stage-detail">
             <option value="">Select one</option>
             <option>Draft under review</option>
-            <option>Commercial alignment</option>
-            <option>Final legal review</option>
-            <option>Pending signature</option>
+            <option>Legal review ongoing</option>
+            <option>Commercial alignment pending</option>
+            <option>Signature expected &lt;7 days</option>
+            <option>Signature expected &lt;30 days</option>
+            <option>Signature imminent</option>
           </select>
         </div>
 
@@ -722,21 +725,15 @@ footer{
       </div>
 
       <div class="field">
-        <label for="concern">Primary concern</label>
+        <label for="operational-structure">Operational structure</label>
 
-        <textarea id="concern" placeholder="State the structural exposure briefly." required></textarea>
+        <textarea id="operational-structure" placeholder="Routing, delivery structure, timing dependency, inspection regime, escalation chain or execution conditions relevant to the agreement." required></textarea>
       </div>
 
       <div class="field">
-        <label for="breaks-first">What breaks first if this fails</label>
+        <label for="time-sensitive">Time-sensitive execution conditions</label>
 
-        <textarea id="breaks-first" placeholder="Identify the first point of structural failure." required></textarea>
-      </div>
-
-      <div class="field">
-        <label for="failure">Operational consequence if this fails</label>
-
-        <textarea id="failure" placeholder="What happens operationally if the structure breaks under execution?"></textarea>
+        <textarea id="time-sensitive" placeholder="Delivery windows, notices, inspections, routing dependencies, customs, sequencing or continuity constraints." required></textarea>
       </div>
 
       <div class="grid">
@@ -788,18 +785,105 @@ footer{
         <input id="linkedin" type="text" />
       </div>
 
-      <button class="submit" id="submit-btn" onclick="submitForm()">
+      <button class="submit" id="submit-before-btn" onclick="submitBeforeForm()">
         Submit
       </button>
 
-      <div class="success-msg" id="success-msg">
-        Submission received.
+    </div>
+
+    <div id="signed-fields" style="display:none;">
+
+      <div class="grid">
+
+        <div class="field">
+          <label for="signed-contract-type">Contract type</label>
+
+          <input id="signed-contract-type" type="text" placeholder="Supply, EPC, Charter, Services, Other" />
+        </div>
+
+        <div class="field">
+          <label for="signed-jurisdiction">Jurisdiction(s)</label>
+
+          <input id="signed-jurisdiction" type="text" placeholder="Country / governing law / forum" />
+        </div>
+
       </div>
 
-      <div class="error-msg" id="error-msg">
-        Something went wrong. Please try again or write directly to hugo@contractbreakpoint.com.
+      <div class="field">
+        <label for="current-condition">Current execution condition</label>
+
+        <textarea id="current-condition" placeholder="Describe the current operational condition briefly." required></textarea>
       </div>
 
+      <div class="field">
+        <label for="operational-change">What changed operationally</label>
+
+        <textarea id="operational-change" placeholder="Route, timing, access, clearance, delivery, inspection, counterparty performance, notice or continuity condition." required></textarea>
+      </div>
+
+      <div class="field">
+        <label for="commercial-consequence">Immediate commercial consequence</label>
+
+        <textarea id="commercial-consequence" placeholder="Delay, blocked delivery, payment exposure, claims pressure, insurance friction, recovery uncertainty or operational interruption."></textarea>
+      </div>
+
+      <div class="grid">
+
+        <div class="field">
+          <label for="counterparty-status">Counterparty status</label>
+
+          <select id="counterparty-status">
+            <option value="">Select one</option>
+            <option>Performing</option>
+            <option>Delayed</option>
+            <option>Disputed</option>
+            <option>Unresponsive</option>
+            <option>Unknown</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="signed-exposure">Financial exposure already committed</label>
+
+          <input id="signed-exposure" type="text" placeholder="Yes / No / amount if applicable" />
+        </div>
+
+      </div>
+
+      <div class="grid">
+
+        <div class="field">
+          <label for="signed-name">Name</label>
+
+          <input id="signed-name" type="text" required />
+        </div>
+
+        <div class="field">
+          <label for="signed-email">Email</label>
+
+          <input id="signed-email" type="email" required />
+        </div>
+
+      </div>
+
+      <div class="field">
+        <label for="signed-linkedin">LinkedIn or company URL</label>
+
+        <input id="signed-linkedin" type="text" />
+      </div>
+
+      <button class="submit" id="submit-signed-btn" onclick="submitSignedForm()">
+        Submit
+      </button>
+
+    </div>
+
+    <div class="success-msg" id="success-msg">
+      Submission received.
+    </div>
+
+    <div class="error-msg" id="error-msg">
+      Something went wrong. Please try again or write directly to hugo@contractbreakpoint.com.
     </div>
 
   </div>
@@ -843,73 +927,47 @@ function v(id){
   return document.getElementById(id).value.trim();
 }
 
+function resetMessages(){
+  document.getElementById('success-msg').style.display = 'none';
+  document.getElementById('error-msg').style.display = 'none';
+}
+
 function checkStage(sel){
 
   var notice = document.getElementById('signed-notice');
-  var fields = document.getElementById('form-fields');
+  var beforeFields = document.getElementById('before-fields');
+  var signedFields = document.getElementById('signed-fields');
+
+  resetMessages();
 
   if(sel.value === 'before'){
 
     notice.style.display = 'none';
-    fields.style.display = 'block';
+    beforeFields.style.display = 'block';
+    signedFields.style.display = 'none';
 
   } else if(sel.value === 'signed'){
 
     notice.style.display = 'block';
-    fields.style.display = 'none';
+    beforeFields.style.display = 'none';
+    signedFields.style.display = 'block';
 
   } else {
 
     notice.style.display = 'none';
-    fields.style.display = 'none';
+    beforeFields.style.display = 'none';
+    signedFields.style.display = 'none';
   }
 }
 
-async function submitForm(){
+async function sendSubmission(data, buttonId){
 
-  var stage = v('stage');
-
-  if(!stage){
-    alert('Please select contract status.');
-    return;
-  }
-
-  if(stage === 'signed'){
-    return;
-  }
-
-  var name = v('name');
-  var email = v('email');
-  var concern = v('concern');
-  var breaks = v('breaks-first');
-
-  if(!name || !email || !concern || !breaks){
-    alert('Please fill in Name, Email, Primary concern, and What breaks first.');
-    return;
-  }
-
-  var btn = document.getElementById('submit-btn');
+  var btn = document.getElementById(buttonId);
 
   btn.disabled = true;
   btn.textContent = 'Sending...';
 
-  var data = {
-    access_key: '77b93cfa-7294-4e76-a546-b2a7514fa040',
-    subject: 'Pre-Signature Exposure',
-    from_name: name,
-    email: email,
-    'Contract type': v('contract-type'),
-    'Jurisdiction': v('jurisdiction'),
-    'Current stage': v('stage-detail'),
-    'Counterparty type': v('counterparty'),
-    'Primary concern': concern,
-    'What breaks first': breaks,
-    'Operational consequence': v('failure'),
-    'Time to signature': v('time-to-sig'),
-    'Legal reviewed': v('legal-review'),
-    'Financial exposure': v('exposure'),
-    'LinkedIn / company URL': v('linkedin')
-  };
+  resetMessages();
 
   try{
 
@@ -936,6 +994,70 @@ async function submitForm(){
     btn.disabled = false;
     btn.textContent = 'Submit';
   }
+}
+
+async function submitBeforeForm(){
+
+  var name = v('name');
+  var email = v('email');
+  var operationalStructure = v('operational-structure');
+  var timeSensitive = v('time-sensitive');
+
+  if(!name || !email || !operationalStructure || !timeSensitive){
+    alert('Please fill in Name, Email, Operational structure, and Time-sensitive execution conditions.');
+    return;
+  }
+
+  var data = {
+    access_key: '77b93cfa-7294-4e76-a546-b2a7514fa040',
+    subject: 'Pre-Signature Exposure',
+    from_name: name,
+    email: email,
+    'Contract status': 'Before signature',
+    'Contract type': v('contract-type'),
+    'Jurisdiction': v('jurisdiction'),
+    'Execution timing relative to signature': v('stage-detail'),
+    'Counterparty type': v('counterparty'),
+    'Operational structure': operationalStructure,
+    'Time-sensitive execution conditions': timeSensitive,
+    'Time to signature': v('time-to-sig'),
+    'Legal reviewed': v('legal-review'),
+    'Financial exposure': v('exposure'),
+    'LinkedIn / company URL': v('linkedin')
+  };
+
+  await sendSubmission(data, 'submit-before-btn');
+}
+
+async function submitSignedForm(){
+
+  var name = v('signed-name');
+  var email = v('signed-email');
+  var currentCondition = v('current-condition');
+  var operationalChange = v('operational-change');
+
+  if(!name || !email || !currentCondition || !operationalChange){
+    alert('Please fill in Name, Email, Current execution condition, and What changed operationally.');
+    return;
+  }
+
+  var data = {
+    access_key: '77b93cfa-7294-4e76-a546-b2a7514fa040',
+    subject: 'Execution Condition Intake',
+    from_name: name,
+    email: email,
+    'Contract status': 'Already signed',
+    'Contract type': v('signed-contract-type'),
+    'Jurisdiction': v('signed-jurisdiction'),
+    'Current execution condition': currentCondition,
+    'What changed operationally': operationalChange,
+    'Immediate commercial consequence': v('commercial-consequence'),
+    'Counterparty status': v('counterparty-status'),
+    'Financial exposure': v('signed-exposure'),
+    'LinkedIn / company URL': v('signed-linkedin')
+  };
+
+  await sendSubmission(data, 'submit-signed-btn');
 }
 </script>
 
