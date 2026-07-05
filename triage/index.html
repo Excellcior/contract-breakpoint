@@ -313,12 +313,57 @@ main{
   color:var(--muted);
 }
 
-.cta{
-  display:inline-block;
+.field{
+  display:flex;
+  flex-direction:column;
 
-  margin-top:10px;
+  gap:8px;
+
+  margin-bottom:16px;
+}
+
+label{
+  color:var(--muted);
+
+  font-size:13px;
+
+  letter-spacing:.04em;
+}
+
+input,
+select,
+textarea{
+  width:100%;
 
   border:1px solid var(--line);
+
+  border-radius:10px;
+
+  padding:13px 14px;
+
+  background:#0c1214;
+
+  color:var(--text);
+
+  font:inherit;
+
+  line-height:1.4;
+}
+
+textarea{
+  min-height:100px;
+  resize:vertical;
+}
+
+input:focus,
+select:focus,
+textarea:focus{
+  outline:none;
+  border-color:#4d5b5e;
+}
+
+.submit{
+  border:none;
 
   background:#d8e0df;
 
@@ -329,10 +374,46 @@ main{
   padding:14px 18px;
 
   font:inherit;
+
+  cursor:pointer;
 }
 
-.cta:hover{
+.submit:hover{
   opacity:.9;
+}
+
+.submit:disabled{
+  opacity:.5;
+  cursor:not-allowed;
+}
+
+.success-msg,
+.error-msg{
+  display:none;
+
+  margin-top:16px;
+
+  padding:12px 14px;
+
+  border-radius:10px;
+
+  font-size:14px;
+}
+
+.success-msg{
+  border:1px solid #355742;
+
+  background:#0f1713;
+
+  color:#b9d7c3;
+}
+
+.error-msg{
+  border:1px solid #5c3434;
+
+  background:#170f0f;
+
+  color:#d8b4b4;
 }
 
 footer{
@@ -428,12 +509,12 @@ footer{
   <div class="hero-intro">
 
     <p class="statement">
-      Execution risk is often visible before signature.<br>
-      It is rarely priced correctly before commitment.
+      Execution risk is often visible before commitment.<br>
+      It is rarely isolated before the position is exposed.
     </p>
 
     <p>
-      Contract Operations Risk Triage is a fixed-scope written review for procurement, logistics, shipping and cross-border commercial agreements before commitment.
+      Contract Operations Risk Triage is a fixed-scope written review for procurement, logistics, shipping and cross-border commercial agreements before signature, purchase order, supplier commitment, revised terms acceptance or operational release.
     </p>
 
     <p>
@@ -519,7 +600,7 @@ footer{
   </h2>
 
   <p>
-    Designed for situations where a commercial team needs a written operational exposure note before signing, accepting revised terms, committing to a supplier, approving a purchase order, entering a logistics sequence or absorbing a delivery structure.
+    Designed for situations where a commercial, procurement, logistics or operations team needs a written operational exposure note before committing to terms, suppliers, routing, delivery structure, release sequence or document-dependent payment conditions.
   </p>
 
   <div class="card">
@@ -595,19 +676,119 @@ footer{
   </h2>
 
   <p>
-    Send the relevant document type, transaction context and decision deadline.
+    Submit the relevant document type, transaction context and decision deadline.
   </p>
 
-  <p>
-    Email:
-    <a href="mailto:hugo@contractbreakpoint.com?subject=Contract%20Operations%20Triage">
-      hugo@contractbreakpoint.com
-    </a>
-  </p>
+  <div class="card">
 
-  <a class="cta" href="mailto:hugo@contractbreakpoint.com?subject=Contract%20Operations%20Triage">
-    Request written triage
-  </a>
+    <div class="grid">
+
+      <div class="field">
+        <label for="triage-type">Document or agreement type</label>
+
+        <input
+          id="triage-type"
+          type="text"
+          placeholder="RFQ, PO, supplier terms, logistics agreement, charter, services agreement"
+        />
+      </div>
+
+      <div class="field">
+        <label for="triage-stage">Current stage</label>
+
+        <select id="triage-stage">
+          <option value="">Select one</option>
+          <option>Before signature</option>
+          <option>Before purchase order</option>
+          <option>Before supplier commitment</option>
+          <option>Before revised terms acceptance</option>
+          <option>Before shipment / nomination / release</option>
+          <option>Already in execution</option>
+        </select>
+      </div>
+
+    </div>
+
+    <div class="field">
+      <label for="triage-context">Transaction context</label>
+
+      <textarea
+        id="triage-context"
+        placeholder="Briefly describe the transaction, counterparties, logistics structure, timing dependency, delivery route, payment/documentation structure or operational concern."
+        required
+      ></textarea>
+    </div>
+
+    <div class="field">
+      <label for="triage-risk">Main concern</label>
+
+      <textarea
+        id="triage-risk"
+        placeholder="Timing gap, documentation dependency, payment trigger, supplier risk, customs/clearance dependency, demurrage exposure, notice window, delivery risk, operational bottleneck."
+        required
+      ></textarea>
+    </div>
+
+    <div class="grid">
+
+      <div class="field">
+        <label for="triage-deadline">Decision deadline</label>
+
+        <input
+          id="triage-deadline"
+          type="text"
+          placeholder="e.g. 48 hours / 5 days / before Friday"
+        />
+      </div>
+
+      <div class="field">
+        <label for="triage-service">Requested scope</label>
+
+        <select id="triage-service">
+          <option value="">Select one</option>
+          <option>5-Day Written Triage — USD 950</option>
+          <option>Monthly Contract Risk Desk — USD 1,500/month</option>
+          <option>Not sure yet</option>
+        </select>
+      </div>
+
+    </div>
+
+    <div class="grid">
+
+      <div class="field">
+        <label for="triage-name">Name</label>
+
+        <input id="triage-name" type="text" required />
+      </div>
+
+      <div class="field">
+        <label for="triage-email">Email</label>
+
+        <input id="triage-email" type="email" required />
+      </div>
+
+    </div>
+
+    <div class="field">
+      <label for="triage-linkedin">LinkedIn or company URL</label>
+
+      <input id="triage-linkedin" type="text" />
+    </div>
+
+    <button class="submit" id="submit-triage-btn" onclick="submitTriageForm()">
+      Submit triage request
+    </button>
+
+    <div class="success-msg" id="success-msg">
+      Submission received.
+    </div>
+
+    <div class="error-msg" id="error-msg">
+      Something went wrong. Please try again or write directly to hugo@contractbreakpoint.com.
+    </div>
+
+  </div>
 
 </section>
 
@@ -642,6 +823,82 @@ footer{
   </div>
 
 </footer>
+
+<script>
+function v(id){
+  return document.getElementById(id).value.trim();
+}
+
+function resetMessages(){
+  document.getElementById('success-msg').style.display = 'none';
+  document.getElementById('error-msg').style.display = 'none';
+}
+
+async function sendSubmission(data, buttonId){
+
+  var btn = document.getElementById(buttonId);
+
+  btn.disabled = true;
+  btn.textContent = 'Sending...';
+
+  resetMessages();
+
+  try{
+
+    var res = await fetch('https://api.web3forms.com/submit', {
+      method:'POST',
+      headers:{ 'Content-Type':'application/json' },
+      body:JSON.stringify(data)
+    });
+
+    var json = await res.json();
+
+    if(json.success){
+      document.getElementById('success-msg').style.display = 'block';
+      document.getElementById('error-msg').style.display = 'none';
+      btn.style.display = 'none';
+    } else {
+      throw new Error('failed');
+    }
+
+  } catch(e){
+
+    document.getElementById('error-msg').style.display = 'block';
+
+    btn.disabled = false;
+    btn.textContent = 'Submit triage request';
+  }
+}
+
+async function submitTriageForm(){
+
+  var name = v('triage-name');
+  var email = v('triage-email');
+  var context = v('triage-context');
+  var risk = v('triage-risk');
+
+  if(!name || !email || !context || !risk){
+    alert('Please fill in Name, Email, Transaction context, and Main concern.');
+    return;
+  }
+
+  var data = {
+    access_key: '77b93cfa-7294-4e76-a546-b2a7514fa040',
+    subject: 'Contract Operations Triage',
+    from_name: name,
+    email: email,
+    'Document or agreement type': v('triage-type'),
+    'Current stage': v('triage-stage'),
+    'Transaction context': context,
+    'Main concern': risk,
+    'Decision deadline': v('triage-deadline'),
+    'Requested scope': v('triage-service'),
+    'LinkedIn / company URL': v('triage-linkedin')
+  };
+
+  await sendSubmission(data, 'submit-triage-btn');
+}
+</script>
 
 </body>
 </html>
