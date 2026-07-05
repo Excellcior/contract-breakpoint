@@ -3,193 +3,343 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Contract Operations Risk Triage | Contract Breakpoint</title>
+
+  <title>Contract Operations Risk Triage | Contract Breakpoint Analysis</title>
   <meta name="description" content="Fixed-scope written operational contract-risk review for procurement, logistics, shipping and cross-border commercial agreements." />
 
   <style>
-    body {
-      margin: 0;
-      font-family: Arial, Helvetica, sans-serif;
-      background: #0f1720;
-      color: #f4f4f4;
-      line-height: 1.6;
+    :root {
+      --bg: #f7f5f0;
+      --text: #111111;
+      --muted: #666666;
+      --line: #d8d3c8;
+      --soft: #efebe3;
+      --max: 980px;
     }
 
-    .container {
-      max-width: 920px;
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: Georgia, "Times New Roman", serif;
+      line-height: 1.55;
+    }
+
+    .page {
+      max-width: var(--max);
       margin: 0 auto;
-      padding: 56px 24px 80px;
+      padding: 42px 24px 72px;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      gap: 24px;
+      align-items: baseline;
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 18px;
+      margin-bottom: 64px;
+    }
+
+    .brand {
+      font-size: 15px;
+      letter-spacing: 0.03em;
+    }
+
+    nav {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+      font-size: 14px;
+    }
+
+    a {
+      color: var(--text);
+      text-decoration: none;
+      border-bottom: 1px solid var(--text);
+    }
+
+    a:hover {
+      color: var(--muted);
+      border-bottom-color: var(--muted);
     }
 
     .eyebrow {
+      font-size: 14px;
+      color: var(--muted);
+      letter-spacing: 0.08em;
       text-transform: uppercase;
-      letter-spacing: 0.12em;
-      font-size: 13px;
-      color: #9fb3c8;
-      margin-bottom: 24px;
+      margin-bottom: 28px;
     }
 
     h1 {
-      font-size: 44px;
-      line-height: 1.1;
-      margin: 0 0 24px;
-      font-weight: 700;
+      font-size: clamp(44px, 8vw, 82px);
+      line-height: 0.95;
+      letter-spacing: -0.04em;
+      font-weight: 400;
+      margin: 0 0 28px;
+      max-width: 780px;
+    }
+
+    .lead {
+      font-size: clamp(22px, 3vw, 32px);
+      line-height: 1.25;
+      max-width: 760px;
+      margin: 0 0 34px;
+    }
+
+    .intro {
+      font-size: 19px;
+      max-width: 760px;
+      color: #222222;
+      margin-bottom: 72px;
+    }
+
+    section {
+      border-top: 1px solid var(--line);
+      padding-top: 34px;
+      margin-top: 46px;
     }
 
     h2 {
-      font-size: 26px;
-      margin-top: 48px;
-      margin-bottom: 16px;
-      color: #ffffff;
+      font-size: 18px;
+      font-weight: 400;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin: 0 0 24px;
+    }
+
+    h3 {
+      font-size: 28px;
+      line-height: 1.2;
+      font-weight: 400;
+      margin: 0 0 10px;
     }
 
     p {
       font-size: 18px;
-      color: #d6dde5;
-      margin-bottom: 18px;
+      max-width: 760px;
+      margin: 0 0 18px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 28px;
+    }
+
+    .item {
+      border-top: 1px solid var(--line);
+      padding-top: 18px;
+    }
+
+    .item p {
+      color: var(--muted);
+      font-size: 17px;
+      margin-bottom: 0;
     }
 
     ul {
-      margin: 12px 0 28px;
-      padding-left: 22px;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      max-width: 760px;
     }
 
     li {
-      margin-bottom: 10px;
-      color: #d6dde5;
-      font-size: 17px;
+      font-size: 18px;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--line);
     }
 
-    .box {
-      border: 1px solid #2f4052;
-      background: #152232;
-      padding: 28px;
-      border-radius: 12px;
-      margin: 32px 0;
+    .offer {
+      background: var(--soft);
+      border: 1px solid var(--line);
+      padding: 26px;
+      margin: 28px 0;
+      max-width: 760px;
     }
 
     .price {
-      font-size: 24px;
-      font-weight: 700;
-      color: #ffffff;
+      font-size: 28px;
+      line-height: 1.2;
       margin-bottom: 8px;
     }
 
-    .muted {
-      color: #9fb3c8;
-      font-size: 16px;
+    .note {
+      color: var(--muted);
+      font-size: 17px;
+      margin: 0;
+    }
+
+    .boundary {
+      max-width: 760px;
+      border-left: 3px solid var(--text);
+      padding-left: 18px;
+      color: #222222;
     }
 
     .cta {
       display: inline-block;
-      margin-top: 24px;
-      padding: 14px 22px;
-      background: #ffffff;
-      color: #0f1720;
+      margin-top: 18px;
+      padding: 12px 18px;
+      border: 1px solid var(--text);
       text-decoration: none;
-      border-radius: 8px;
-      font-weight: 700;
-    }
-
-    .boundary {
-      border-left: 4px solid #9fb3c8;
-      padding-left: 18px;
-      color: #d6dde5;
-    }
-
-    a {
-      color: #ffffff;
+      font-size: 16px;
     }
 
     footer {
+      border-top: 1px solid var(--line);
       margin-top: 72px;
+      padding-top: 22px;
+      color: var(--muted);
       font-size: 14px;
-      color: #7f8fa3;
+    }
+
+    @media (max-width: 720px) {
+      header {
+        display: block;
+        margin-bottom: 48px;
+      }
+
+      nav {
+        margin-top: 14px;
+      }
+
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      .page {
+        padding: 32px 18px 56px;
+      }
     }
   </style>
 </head>
 
 <body>
-  <main class="container">
-    <div class="eyebrow">Contract Breakpoint · Operational Review</div>
+  <main class="page">
+    <header>
+      <div class="brand">
+        <a href="/">Contract Breakpoint Analysis</a>
+      </div>
+
+      <nav>
+        <a href="/">Home</a>
+        <a href="/signals/">Signals</a>
+        <a href="#scope">Scope</a>
+        <a href="#boundary">Boundary</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
+
+    <div class="eyebrow">Operational contract-risk review</div>
 
     <h1>Contract Operations Risk Triage</h1>
 
-    <p>
-      A fixed-scope written review for procurement, logistics, shipping and cross-border
-      commercial agreements before commitment.
+    <p class="lead">
+      Fixed-scope written review for procurement, logistics, shipping and cross-border agreements before commitment.
     </p>
 
-    <p>
-      The review identifies where an RFQ, purchase order, supplier agreement, logistics
-      arrangement or execution-sensitive contract may fail in practice: timing gaps,
-      sequencing exposure, documentation dependency, delivery risk, notice issues,
-      payment triggers, demurrage exposure and operational bottlenecks.
+    <p class="intro">
+      The review identifies where an RFQ, purchase order, supplier agreement,
+      logistics arrangement or execution-sensitive contract may fail in practice:
+      timing gaps, sequencing exposure, documentation dependency, delivery risk,
+      notice issues, payment triggers, demurrage exposure and operational bottlenecks.
     </p>
 
-    <div class="box">
-      <div class="price">5-Day Written Triage — USD 950</div>
-      <div class="muted">
-        Written operational risk review delivered within 3–5 business days after receiving the relevant document set.
+    <section id="scope">
+      <h2>Available review</h2>
+
+      <div class="offer">
+        <div class="price">5-Day Written Triage — USD 950</div>
+        <p class="note">
+          Written operational risk review delivered within 3–5 business days after receiving the relevant document set.
+        </p>
       </div>
-    </div>
 
-    <h2>What is reviewed</h2>
-
-    <ul>
-      <li>Delivery obligations and operational feasibility</li>
-      <li>Timing and sequencing dependency</li>
-      <li>Notice windows and procedural exposure</li>
-      <li>Payment triggers and documentation requirements</li>
-      <li>Demurrage, delay and disruption exposure</li>
-      <li>Customs, clearance and third-party dependency</li>
-      <li>Supplier, vendor and logistics coordination risk</li>
-      <li>Operational recovery gaps before execution begins</li>
-    </ul>
-
-    <h2>Output</h2>
-
-    <ul>
-      <li>6–8 page written review</li>
-      <li>Red-flag table</li>
-      <li>Execution failure points</li>
-      <li>Questions to raise before commitment</li>
-      <li>Short executive exposure note</li>
-    </ul>
-
-    <div class="box">
-      <div class="price">Monthly Contract Risk Desk — USD 1,500/month</div>
-      <div class="muted">
-        Up to four fixed-scope written reviews per month for procurement, logistics or contract operations teams.
+      <div class="offer">
+        <div class="price">Monthly Contract Risk Desk — USD 1,500/month</div>
+        <p class="note">
+          Up to four fixed-scope written reviews per month for procurement, logistics or contract operations teams.
+        </p>
       </div>
-    </div>
+    </section>
 
-    <h2>Boundary</h2>
+    <section>
+      <h2>What is reviewed</h2>
 
-    <p class="boundary">
-      This is not legal advice. No clause drafting. No legal interpretation. No negotiation.
-      No representation. No dispute handling. The review is operational and commercial only.
-    </p>
+      <div class="grid">
+        <div class="item">
+          <h3>Timing</h3>
+          <p>Delivery obligations, sequencing dependency, notice windows and procedural exposure.</p>
+        </div>
 
-    <h2>Contact</h2>
+        <div class="item">
+          <h3>Documentation</h3>
+          <p>Payment triggers, document dependency, release conditions and recoverability gaps.</p>
+        </div>
 
-    <p>
-      Send the relevant document type, transaction context and decision deadline.
-    </p>
+        <div class="item">
+          <h3>Execution</h3>
+          <p>Customs, clearance, third-party dependency, supplier coordination and operational bottlenecks.</p>
+        </div>
 
-    <p>
-      Email:
-      <a href="mailto:hugo@contractbreakpoint.com?subject=Contract%20Operations%20Triage">
-        hugo@contractbreakpoint.com
+        <div class="item">
+          <h3>Exposure</h3>
+          <p>Demurrage, delay, disruption and loss of operational continuity before execution begins.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Output</h2>
+
+      <ul>
+        <li>6–8 page written review</li>
+        <li>Red-flag table</li>
+        <li>Execution failure points</li>
+        <li>Questions to raise before commitment</li>
+        <li>Short executive exposure note</li>
+      </ul>
+    </section>
+
+    <section id="boundary">
+      <h2>Boundary</h2>
+
+      <p class="boundary">
+        This is not legal advice. No clause drafting. No legal interpretation.
+        No negotiation. No representation. No dispute handling. The review is
+        operational and commercial only.
+      </p>
+    </section>
+
+    <section id="contact">
+      <h2>Contact</h2>
+
+      <p>
+        Send the relevant document type, transaction context and decision deadline.
+      </p>
+
+      <p>
+        Email:
+        <a href="mailto:hugo@contractbreakpoint.com?subject=Contract%20Operations%20Triage">
+          hugo@contractbreakpoint.com
+        </a>
+      </p>
+
+      <a class="cta" href="mailto:hugo@contractbreakpoint.com?subject=Contract%20Operations%20Triage">
+        Request written triage
       </a>
-    </p>
-
-    <a class="cta" href="mailto:hugo@contractbreakpoint.com?subject=Contract%20Operations%20Triage">
-      Request written triage
-    </a>
+    </section>
 
     <footer>
-      Contract Breakpoint Analysis · Execution-dependent contracts · Pre-commitment operational exposure
+      Contract Breakpoint Analysis · Execution-dependent contracts · Procurement · Logistics · Shipping · Cross-border commercial operations
     </footer>
   </main>
 </body>
