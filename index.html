@@ -455,6 +455,7 @@ footer{
     <a href="#exists">Scope</a>
     <a href="#failure">Failure</a>
     <a href="/signals/">Signals</a>
+    <a href="/triage/">Triage</a>
     <a href="#boundaries">Boundaries</a>
     <a href="#contact">Contact</a>
 
@@ -872,7 +873,10 @@ footer{
         <input id="signed-linkedin" type="text" />
       </div>
 
-      <button class="submit" id="submit-signed-btn" onclick="submitSignedForm()">
+      <button class="submit" id="submit-signed-btn        <label for="signed-linkedin">LinkedIn or company URL</label>
+
+        <input id="signed-linkedin" type="text" />
+     " onclick="submitSignedForm()">
         Submit
       </button>
 
@@ -925,6 +929,10 @@ footer{
 <script>
 function v(id){
   return document.getElementById(id).value.trim();
+}
+
+function isValidEmail(email){
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 }
 
 function resetMessages(){
@@ -1008,8 +1016,13 @@ async function submitBeforeForm(){
     return;
   }
 
+  if(!isValidEmail(email)){
+    alert('Please enter a valid email address.');
+    return;
+  }
+
   var data = {
-    access_key: '77b93cfa-7294-4e76-a546-b2a7514fa040',
+    access_key: '5986f283-7f45-4503-8eba-f1c5bb0a7096',
     subject: 'Pre-Signature Exposure',
     from_name: name,
     email: email,
@@ -1041,8 +1054,13 @@ async function submitSignedForm(){
     return;
   }
 
+  if(!isValidEmail(email)){
+    alert('Please enter a valid email address.');
+    return;
+  }
+
   var data = {
-    access_key: '77b93cfa-7294-4e76-a546-b2a7514fa040',
+    access_key: '5986f283-7f45-4503-8eba-f1c5bb0a7096',
     subject: 'Execution Condition Intake',
     from_name: name,
     email: email,
