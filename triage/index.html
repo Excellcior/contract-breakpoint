@@ -237,22 +237,6 @@ main{
   color:var(--muted);
 }
 
-.conditions-link{
-  margin-top:14px;
-
-  color:var(--dim);
-
-  font-size:12px;
-
-  letter-spacing:.14em;
-
-  text-transform:uppercase;
-}
-
-.conditions-link a{
-  color:var(--text);
-}
-
 .card{
   margin-top:26px;
 
@@ -414,6 +398,10 @@ textarea:focus{
   background:#170f0f;
 
   color:#d8b4b4;
+}
+
+.hidden{
+  display:none;
 }
 
 footer{
@@ -681,6 +669,15 @@ footer{
 
   <div class="card">
 
+    <input
+      type="checkbox"
+      id="botcheck"
+      class="hidden"
+      style="display:none;"
+      tabindex="-1"
+      autocomplete="off"
+    />
+
     <div class="grid">
 
       <div class="field">
@@ -829,6 +826,10 @@ function v(id){
   return document.getElementById(id).value.trim();
 }
 
+function isValidEmail(email){
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+}
+
 function resetMessages(){
   document.getElementById('success-msg').style.display = 'none';
   document.getElementById('error-msg').style.display = 'none';
@@ -872,6 +873,12 @@ async function sendSubmission(data, buttonId){
 
 async function submitTriageForm(){
 
+  var botcheck = document.getElementById('botcheck');
+
+  if(botcheck && botcheck.checked){
+    return;
+  }
+
   var name = v('triage-name');
   var email = v('triage-email');
   var context = v('triage-context');
@@ -882,11 +889,17 @@ async function submitTriageForm(){
     return;
   }
 
+  if(!isValidEmail(email)){
+    alert('Please enter a valid email address.');
+    return;
+  }
+
   var data = {
-    access_key: '77b93cfa-7294-4e76-a546-b2a7514fa040',
+    access_key: '5986f283-7f45-4503-8eba-f1c5bb0a7096',
     subject: 'Contract Operations Triage',
     from_name: name,
     email: email,
+    botcheck: botcheck && botcheck.checked ? 'on' : '',
     'Document or agreement type': v('triage-type'),
     'Current stage': v('triage-stage'),
     'Transaction context': context,
