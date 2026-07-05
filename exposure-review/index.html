@@ -6,10 +6,10 @@
 
 <title>Operational Exposure Review</title>
 
-<meta name="description" content="Fixed-scope written review for live procurement, logistics, shipping and cross-border arrangements already under operational movement." />
+<meta name="description" content="A fixed-scope written review of live operational exposure in procurement, logistics, shipping and cross-border commercial arrangements." />
 
 <meta property="og:title" content="Operational Exposure Review" />
-<meta property="og:description" content="Fixed-scope written review for live procurement, logistics, shipping and cross-border arrangements already under operational movement." />
+<meta property="og:description" content="Fixed-scope written review for live procurement, logistics, shipping and cross-border arrangements already in motion." />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://contractbreakpoint.com/exposure-review/" />
 <meta property="og:image" content="https://contractbreakpoint.com/exposure-review/operational_exposure_review_og.png" />
@@ -20,15 +20,14 @@
 
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="Operational Exposure Review" />
-<meta name="twitter:description" content="Fixed-scope written review for live procurement, logistics, shipping and cross-border arrangements already under operational movement." />
+<meta name="twitter:description" content="Fixed-scope written review for live procurement, logistics, shipping and cross-border arrangements already in motion." />
 <meta name="twitter:image" content="https://contractbreakpoint.com/exposure-review/operational_exposure_review_og.png" />
 
 <style>
 :root{
-  --max:980px;
+  --max:960px;
   --pad:24px;
   --bg:#06090a;
-  --panel:#080d0f;
   --line:#1c272b;
   --line-soft:#11191c;
   --text:#d8e0df;
@@ -61,12 +60,8 @@ a{
 }
 
 header{
-  position:sticky;
-  top:0;
-  background:rgba(6,9,10,.94);
   border-bottom:1px solid var(--line);
-  z-index:20;
-  backdrop-filter:blur(8px);
+  background:rgba(6,9,10,.94);
 }
 
 .nav{
@@ -74,13 +69,12 @@ header{
   margin:auto;
   padding:16px var(--pad);
   display:flex;
+  justify-content:space-between;
   gap:18px;
   align-items:center;
-  flex-wrap:wrap;
 }
 
 .brand{
-  margin-right:auto;
   color:var(--text);
   font-size:13px;
   letter-spacing:.18em;
@@ -101,13 +95,13 @@ header{
 main{
   max-width:var(--max);
   margin:auto;
-  padding:52px var(--pad) 90px;
+  padding:58px var(--pad) 90px;
 }
 
 .hero{
   border-bottom:1px solid var(--line);
-  padding-bottom:44px;
-  margin-bottom:56px;
+  padding-bottom:46px;
+  margin-bottom:52px;
 }
 
 .kicker{
@@ -115,33 +109,74 @@ main{
   font-size:11px;
   letter-spacing:.34em;
   text-transform:uppercase;
-  margin-bottom:40px;
+  margin-bottom:34px;
 }
 
-.hero h1{
+h1{
   margin:0;
-  font-size:48px;
-  line-height:1.02;
+  font-size:50px;
+  line-height:1.03;
   letter-spacing:.04em;
   text-transform:uppercase;
   font-weight:500;
 }
 
-.hero-intro{
-  margin-top:42px;
-  max-width:720px;
+.statement{
+  margin-top:36px;
+  max-width:760px;
+  color:var(--text);
+  font-size:18px;
+  line-height:1.7;
+}
+
+.hero-copy{
+  margin-top:22px;
+  max-width:760px;
   color:var(--muted);
   font-size:15px;
 }
 
-.hero-intro p{
-  margin:0 0 18px;
+.price-strip{
+  margin-top:34px;
+  border:1px solid var(--line);
+  border-radius:14px;
+  padding:20px;
+  background:rgba(255,255,255,.015);
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:18px;
 }
 
-.statement{
-  color:var(--text);
-  font-size:17px;
-  line-height:1.7;
+.price-box{
+  border-top:1px solid var(--line-soft);
+  padding-top:16px;
+}
+
+.price-title{
+  color:var(--accent);
+  font-size:13px;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  margin-bottom:8px;
+}
+
+.price-box p{
+  margin:0;
+  color:var(--muted);
+  font-size:14px;
+}
+
+.cta-row{
+  margin-top:28px;
+}
+
+.cta{
+  display:inline-block;
+  background:var(--text);
+  color:#06090a;
+  border-radius:12px;
+  padding:14px 18px;
+  font-size:14px;
 }
 
 .section{
@@ -154,18 +189,18 @@ main{
   font-size:11px;
   letter-spacing:.34em;
   text-transform:uppercase;
-  margin-bottom:26px;
+  margin-bottom:24px;
 }
 
-.section h2{
+h2{
   margin:0 0 18px;
   font-size:24px;
   line-height:1.2;
   font-weight:500;
 }
 
-.section p{
-  max-width:720px;
+p{
+  max-width:760px;
   color:var(--muted);
   margin:0 0 18px;
 }
@@ -202,23 +237,6 @@ main{
   border-radius:14px;
 }
 
-.price{
-  color:var(--accent);
-  font-size:13px;
-  letter-spacing:.12em;
-  text-transform:uppercase;
-  margin-bottom:10px;
-}
-
-ul{
-  color:var(--muted);
-  padding-left:22px;
-}
-
-li{
-  margin-bottom:8px;
-}
-
 .field{
   display:flex;
   flex-direction:column;
@@ -246,7 +264,7 @@ textarea{
 }
 
 textarea{
-  min-height:110px;
+  min-height:120px;
   resize:vertical;
 }
 
@@ -321,21 +339,23 @@ footer{
   border-bottom:1px solid #4d5b5e;
 }
 
-@media (max-width:760px){
+@media(max-width:760px){
   main{
     padding:42px 20px 80px;
   }
 
-  .hero h1{
+  h1{
     font-size:38px;
   }
 
-  .grid{
+  .grid,
+  .price-strip{
     grid-template-columns:1fr;
   }
 
   .nav{
-    gap:12px;
+    align-items:flex-start;
+    flex-direction:column;
   }
 }
 </style>
@@ -345,17 +365,8 @@ footer{
 
 <header>
   <nav class="nav">
-
-    <div class="brand">
-      Operational Exposure Review
-    </div>
-
-    <a href="#scope">Scope</a>
-    <a href="#review">Review</a>
-    <a href="#output">Output</a>
-    <a href="#boundary">Boundary</a>
-    <a href="#contact">Contact</a>
-
+    <div class="brand">Operational Exposure Review</div>
+    <a href="#request">Request review</a>
   </nav>
 </header>
 
@@ -364,7 +375,7 @@ footer{
 <section class="hero">
 
   <div class="kicker">
-    In-flight operational exposure
+    Live operational exposure
   </div>
 
   <h1>
@@ -373,155 +384,108 @@ footer{
     Review
   </h1>
 
-  <div class="hero-intro">
-
-    <p class="statement">
-      The incident is rarely the exposure.<br>
-      The exposure is usually procedural and already moving.
-    </p>
-
-    <p>
-      Operational Exposure Review is a fixed-scope written review for procurement, logistics, shipping and cross-border commercial arrangements already under operational movement.
-    </p>
-
-    <p>
-      The review identifies where delivery, documentation, payment, routing, notice, inspection or escalation conditions may degrade the recoverable position before the next operational decision is taken.
-    </p>
-
+  <div class="statement">
+    The incident is rarely the exposure.<br>
+    The exposure is usually procedural, already moving, and time-sensitive.
   </div>
 
-</section>
-
-<section id="scope" class="section">
-
-  <div class="section-label">
-    Scope
+  <div class="hero-copy">
+    A fixed-scope written review for procurement, logistics, shipping and cross-border commercial arrangements already in motion.
   </div>
 
-  <h2>
-    What is reviewed
-  </h2>
+  <div class="price-strip">
 
-  <div class="grid">
-
-    <div class="block">
-
-      <div class="block-title">
-        Procedural exposure
-      </div>
-
-      <p>
-        Notice sequence, documentation timing, inspection position, handover steps and escalation routing.
-      </p>
-
-    </div>
-
-    <div class="block">
-
-      <div class="block-title">
-        Operational movement
-      </div>
-
-      <p>
-        Routing, delivery windows, customs, clearance, supplier coordination and third-party dependency.
-      </p>
-
-    </div>
-
-    <div class="block">
-
-      <div class="block-title">
-        Recoverable position
-      </div>
-
-      <p>
-        Whether the current sequence preserves or weakens the commercial position under delay, disruption or dispute pressure.
-      </p>
-
-    </div>
-
-    <div class="block">
-
-      <div class="block-title">
-        Recurrence risk
-      </div>
-
-      <p>
-        Patterns likely to repeat across similar purchase orders, shipments, releases, supplier terms or logistics arrangements.
-      </p>
-
-    </div>
-
-  </div>
-
-</section>
-
-<section id="review" class="section">
-
-  <div class="section-label">
-    Available review
-  </div>
-
-  <h2>
-    Fixed-scope written exposure note
-  </h2>
-
-  <p>
-    Designed for operations, procurement, logistics and commercial teams handling live arrangements where the next step may affect recoverability, payment, delivery, escalation or loss position.
-  </p>
-
-  <div class="grid">
-
-    <div class="card">
-
-      <div class="price">
+    <div class="price-box">
+      <div class="price-title">
         5-Day Exposure Review — USD 950
       </div>
-
       <p>
-        Written operational exposure note delivered within 3–5 business days after receiving the relevant document set and current operating context.
+        Written exposure note delivered within 3–5 business days after receiving the relevant document set and operating context.
       </p>
-
     </div>
 
-    <div class="card">
-
-      <div class="price">
+    <div class="price-box">
+      <div class="price-title">
         Monthly Exposure Desk — USD 1,500/month
       </div>
-
       <p>
         Up to four fixed-scope written reviews per month for recurring procurement, logistics, shipping or commercial operations exposure.
       </p>
+    </div>
 
+  </div>
+
+  <div class="cta-row">
+    <a class="cta" href="#request">Request exposure review</a>
+  </div>
+
+</section>
+
+<section class="section">
+
+  <div class="section-label">
+    Use case
+  </div>
+
+  <h2>
+    When this is useful
+  </h2>
+
+  <p>
+    Use this when a delivery, shipment, supplier term, payment trigger, documentation sequence, inspection step, customs issue, notice chain or escalation path is already active and the next operational decision may affect recoverability.
+  </p>
+
+</section>
+
+<section class="section">
+
+  <div class="section-label">
+    What is reviewed
+  </div>
+
+  <div class="grid">
+
+    <div class="block">
+      <div class="block-title">Procedural exposure</div>
+      <p>Notice sequence, documentation timing, inspection position, handover steps and escalation routing.</p>
+    </div>
+
+    <div class="block">
+      <div class="block-title">Operational movement</div>
+      <p>Routing, delivery windows, customs, clearance, supplier coordination and third-party dependency.</p>
+    </div>
+
+    <div class="block">
+      <div class="block-title">Recoverable position</div>
+      <p>Whether the current sequence preserves or weakens the commercial position under delay, disruption or dispute pressure.</p>
+    </div>
+
+    <div class="block">
+      <div class="block-title">Recurring pattern</div>
+      <p>Exposure likely to repeat across similar purchase orders, shipments, releases, supplier terms or logistics arrangements.</p>
     </div>
 
   </div>
 
 </section>
 
-<section id="output" class="section">
+<section class="section">
 
   <div class="section-label">
     Output
   </div>
 
   <h2>
-    What is delivered
+    What you receive
   </h2>
 
-  <ul>
-    <li>Written exposure note</li>
-    <li>Current procedural position</li>
-    <li>Operational failure points</li>
-    <li>Recoverability risks</li>
-    <li>Questions to resolve before the next operational step</li>
-    <li>Short executive exposure summary</li>
-  </ul>
+  <p>
+    A written exposure note identifying the current procedural position, operational failure points, recoverability risks and questions to resolve before the next operational step.
+  </p>
 
 </section>
 
-<section id="boundary" class="section">
+<section class="section">
 
   <div class="section-label">
     Boundary
@@ -532,15 +496,15 @@ footer{
   </h2>
 
   <p>
-    This is not legal advice. No clause drafting. No legal interpretation. No negotiation. No representation. No dispute handling. The review is operational and commercial only.
+    This is not legal advice. No clause drafting. No legal interpretation. No negotiation. No representation. No dispute handling.
   </p>
 
 </section>
 
-<section id="contact" class="section">
+<section id="request" class="section">
 
   <div class="section-label">
-    Contact
+    Request
   </div>
 
   <h2>
@@ -548,7 +512,7 @@ footer{
   </h2>
 
   <p>
-    Submit the current operating context, arrangement type and decision deadline.
+    Submit only the operating context. Document transfer comes after acceptance.
   </p>
 
   <div class="card">
@@ -557,21 +521,12 @@ footer{
 
       <div class="field">
         <label for="arrangement-type">Arrangement type</label>
-        <input id="arrangement-type" type="text" placeholder="Purchase order, shipment, supplier terms, logistics arrangement, release sequence, other" />
+        <input id="arrangement-type" type="text" placeholder="Purchase order, shipment, supplier terms, logistics arrangement, release sequence" />
       </div>
 
       <div class="field">
-        <label for="current-stage">Current stage</label>
-        <select id="current-stage">
-          <option value="">Select one</option>
-          <option>Already moving</option>
-          <option>Delivery pending</option>
-          <option>Documentation pending</option>
-          <option>Payment / release pending</option>
-          <option>Delay or disruption active</option>
-          <option>Escalation likely</option>
-          <option>Recurring issue</option>
-        </select>
+        <label for="deadline">Decision deadline</label>
+        <input id="deadline" type="text" placeholder="48 hours / this week / before next release" />
       </div>
 
     </div>
@@ -589,18 +544,17 @@ footer{
     <div class="grid">
 
       <div class="field">
-        <label for="deadline">Decision deadline</label>
-        <input id="deadline" type="text" placeholder="e.g. 48 hours / this week / before next release" />
-      </div>
-
-      <div class="field">
         <label for="scope-requested">Requested scope</label>
         <select id="scope-requested">
           <option value="">Select one</option>
-          <option>5-Day Exposure Review</option>
-          <option>Monthly Exposure Desk</option>
-          <option>Not sure yet</option>
+          <option>5-Day Exposure Review — USD 950</option>
+          <option>Monthly Exposure Desk — USD 1,500/month</option>
         </select>
+      </div>
+
+      <div class="field">
+        <label for="company">Company / LinkedIn URL</label>
+        <input id="company" type="text" />
       </div>
 
     </div>
@@ -619,17 +573,12 @@ footer{
 
     </div>
 
-    <div class="field">
-      <label for="linkedin">LinkedIn or company URL</label>
-      <input id="linkedin" type="text" />
-    </div>
-
     <div style="display:none;">
       <input id="botcheck" type="checkbox" />
     </div>
 
     <button class="submit" id="submit-btn" onclick="submitExposureForm()">
-      Submit
+      Submit request
     </button>
 
     <div class="success-msg" id="success-msg">
@@ -653,18 +602,11 @@ footer{
   <div class="footer-meta">
 
     Operated by Hugo Federico Hernandez Varela<br>
-
     Procurement · logistics · shipping · operational exposure<br><br>
 
-    <a href="https://www.linkedin.com/in/hfh2309/" target="_blank">
-      LinkedIn
-    </a>
-
+    <a href="https://www.linkedin.com/in/hfh2309/" target="_blank">LinkedIn</a>
     ·
-
-    <a href="https://x.com/HugoFHernandezV" target="_blank">
-      X
-    </a>
+    <a href="https://x.com/HugoFHernandezV" target="_blank">X</a>
 
   </div>
 
@@ -714,9 +656,8 @@ async function sendSubmission(data){
   } catch(e){
 
     document.getElementById('error-msg').style.display = 'block';
-
     btn.disabled = false;
-    btn.textContent = 'Submit';
+    btn.textContent = 'Submit request';
   }
 }
 
@@ -747,12 +688,11 @@ async function submitExposureForm(){
     from_name: name,
     email: email,
     'Arrangement type': v('arrangement-type'),
-    'Current stage': v('current-stage'),
+    'Decision deadline': v('deadline'),
     'Current operating context': operatingContext,
     'Main exposure': exposure,
-    'Decision deadline': v('deadline'),
     'Requested scope': v('scope-requested'),
-    'LinkedIn / company URL': v('linkedin')
+    'Company / LinkedIn URL': v('company')
   };
 
   await sendSubmission(data);
