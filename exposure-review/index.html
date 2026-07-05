@@ -1,0 +1,763 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<title>Operational Exposure Review</title>
+
+<meta name="description" content="Fixed-scope written review for live procurement, logistics, shipping and cross-border arrangements already under operational movement." />
+
+<meta property="og:title" content="Operational Exposure Review" />
+<meta property="og:description" content="Fixed-scope written review for live procurement, logistics, shipping and cross-border arrangements already under operational movement." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://contractbreakpoint.com/exposure-review/" />
+<meta property="og:image" content="https://contractbreakpoint.com/exposure-review/operational_exposure_review_og.png" />
+<meta property="og:image:secure_url" content="https://contractbreakpoint.com/exposure-review/operational_exposure_review_og.png" />
+<meta property="og:image:type" content="image/png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Operational Exposure Review" />
+<meta name="twitter:description" content="Fixed-scope written review for live procurement, logistics, shipping and cross-border arrangements already under operational movement." />
+<meta name="twitter:image" content="https://contractbreakpoint.com/exposure-review/operational_exposure_review_og.png" />
+
+<style>
+:root{
+  --max:980px;
+  --pad:24px;
+  --bg:#06090a;
+  --panel:#080d0f;
+  --line:#1c272b;
+  --line-soft:#11191c;
+  --text:#d8e0df;
+  --muted:#7f8f91;
+  --dim:#4d5b5e;
+  --accent:#b9c7c6;
+}
+
+*{box-sizing:border-box;}
+
+html{
+  background:var(--bg);
+  scroll-behavior:smooth;
+}
+
+body{
+  margin:0;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.025), transparent 240px),
+    radial-gradient(circle at 80% 0%, rgba(120,150,150,.06), transparent 360px),
+    var(--bg);
+  color:var(--text);
+  font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono",monospace;
+  line-height:1.65;
+}
+
+a{
+  color:inherit;
+  text-decoration:none;
+}
+
+header{
+  position:sticky;
+  top:0;
+  background:rgba(6,9,10,.94);
+  border-bottom:1px solid var(--line);
+  z-index:20;
+  backdrop-filter:blur(8px);
+}
+
+.nav{
+  max-width:var(--max);
+  margin:auto;
+  padding:16px var(--pad);
+  display:flex;
+  gap:18px;
+  align-items:center;
+  flex-wrap:wrap;
+}
+
+.brand{
+  margin-right:auto;
+  color:var(--text);
+  font-size:13px;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+}
+
+.nav a{
+  color:var(--muted);
+  font-size:12px;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+}
+
+.nav a:hover{
+  color:var(--text);
+}
+
+main{
+  max-width:var(--max);
+  margin:auto;
+  padding:52px var(--pad) 90px;
+}
+
+.hero{
+  border-bottom:1px solid var(--line);
+  padding-bottom:44px;
+  margin-bottom:56px;
+}
+
+.kicker{
+  color:var(--muted);
+  font-size:11px;
+  letter-spacing:.34em;
+  text-transform:uppercase;
+  margin-bottom:40px;
+}
+
+.hero h1{
+  margin:0;
+  font-size:48px;
+  line-height:1.02;
+  letter-spacing:.04em;
+  text-transform:uppercase;
+  font-weight:500;
+}
+
+.hero-intro{
+  margin-top:42px;
+  max-width:720px;
+  color:var(--muted);
+  font-size:15px;
+}
+
+.hero-intro p{
+  margin:0 0 18px;
+}
+
+.statement{
+  color:var(--text);
+  font-size:17px;
+  line-height:1.7;
+}
+
+.section{
+  border-top:1px solid var(--line);
+  padding:34px 0 38px;
+}
+
+.section-label{
+  color:var(--dim);
+  font-size:11px;
+  letter-spacing:.34em;
+  text-transform:uppercase;
+  margin-bottom:26px;
+}
+
+.section h2{
+  margin:0 0 18px;
+  font-size:24px;
+  line-height:1.2;
+  font-weight:500;
+}
+
+.section p{
+  max-width:720px;
+  color:var(--muted);
+  margin:0 0 18px;
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:18px;
+}
+
+.block{
+  border-top:1px solid var(--line-soft);
+  padding-top:18px;
+}
+
+.block-title{
+  color:var(--accent);
+  font-size:12px;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  margin-bottom:12px;
+}
+
+.block p{
+  margin:0;
+  color:var(--muted);
+}
+
+.card{
+  margin-top:26px;
+  border:1px solid var(--line);
+  background:rgba(255,255,255,.015);
+  padding:22px;
+  border-radius:14px;
+}
+
+.price{
+  color:var(--accent);
+  font-size:13px;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  margin-bottom:10px;
+}
+
+ul{
+  color:var(--muted);
+  padding-left:22px;
+}
+
+li{
+  margin-bottom:8px;
+}
+
+.field{
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+  margin-bottom:16px;
+}
+
+label{
+  color:var(--muted);
+  font-size:13px;
+  letter-spacing:.04em;
+}
+
+input,
+select,
+textarea{
+  width:100%;
+  border:1px solid var(--line);
+  border-radius:10px;
+  padding:13px 14px;
+  background:#0c1214;
+  color:var(--text);
+  font:inherit;
+  line-height:1.4;
+}
+
+textarea{
+  min-height:110px;
+  resize:vertical;
+}
+
+input:focus,
+select:focus,
+textarea:focus{
+  outline:none;
+  border-color:#4d5b5e;
+}
+
+.submit{
+  border:none;
+  background:#d8e0df;
+  color:#06090a;
+  border-radius:12px;
+  padding:14px 18px;
+  font:inherit;
+  cursor:pointer;
+}
+
+.submit:hover{
+  opacity:.9;
+}
+
+.submit:disabled{
+  opacity:.5;
+  cursor:not-allowed;
+}
+
+.success-msg,
+.error-msg{
+  display:none;
+  margin-top:16px;
+  padding:12px 14px;
+  border-radius:10px;
+  font-size:14px;
+}
+
+.success-msg{
+  border:1px solid #355742;
+  background:#0f1713;
+  color:#b9d7c3;
+}
+
+.error-msg{
+  border:1px solid #5c3434;
+  background:#170f0f;
+  color:#d8b4b4;
+}
+
+footer{
+  border-top:1px solid var(--line);
+  padding:28px var(--pad);
+  text-align:center;
+  color:var(--dim);
+  font-size:12px;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+}
+
+.footer-meta{
+  margin-top:18px;
+  color:#7f8f91;
+  font-size:11px;
+  letter-spacing:.08em;
+  text-transform:none;
+  line-height:1.7;
+}
+
+.footer-meta a{
+  color:#d8e0df;
+  border-bottom:1px solid #4d5b5e;
+}
+
+@media (max-width:760px){
+  main{
+    padding:42px 20px 80px;
+  }
+
+  .hero h1{
+    font-size:38px;
+  }
+
+  .grid{
+    grid-template-columns:1fr;
+  }
+
+  .nav{
+    gap:12px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <nav class="nav">
+
+    <div class="brand">
+      Operational Exposure Review
+    </div>
+
+    <a href="#scope">Scope</a>
+    <a href="#review">Review</a>
+    <a href="#output">Output</a>
+    <a href="#boundary">Boundary</a>
+    <a href="#contact">Contact</a>
+
+  </nav>
+</header>
+
+<main>
+
+<section class="hero">
+
+  <div class="kicker">
+    In-flight operational exposure
+  </div>
+
+  <h1>
+    Operational<br>
+    Exposure<br>
+    Review
+  </h1>
+
+  <div class="hero-intro">
+
+    <p class="statement">
+      The incident is rarely the exposure.<br>
+      The exposure is usually procedural and already moving.
+    </p>
+
+    <p>
+      Operational Exposure Review is a fixed-scope written review for procurement, logistics, shipping and cross-border commercial arrangements already under operational movement.
+    </p>
+
+    <p>
+      The review identifies where delivery, documentation, payment, routing, notice, inspection or escalation conditions may degrade the recoverable position before the next operational decision is taken.
+    </p>
+
+  </div>
+
+</section>
+
+<section id="scope" class="section">
+
+  <div class="section-label">
+    Scope
+  </div>
+
+  <h2>
+    What is reviewed
+  </h2>
+
+  <div class="grid">
+
+    <div class="block">
+
+      <div class="block-title">
+        Procedural exposure
+      </div>
+
+      <p>
+        Notice sequence, documentation timing, inspection position, handover steps and escalation routing.
+      </p>
+
+    </div>
+
+    <div class="block">
+
+      <div class="block-title">
+        Operational movement
+      </div>
+
+      <p>
+        Routing, delivery windows, customs, clearance, supplier coordination and third-party dependency.
+      </p>
+
+    </div>
+
+    <div class="block">
+
+      <div class="block-title">
+        Recoverable position
+      </div>
+
+      <p>
+        Whether the current sequence preserves or weakens the commercial position under delay, disruption or dispute pressure.
+      </p>
+
+    </div>
+
+    <div class="block">
+
+      <div class="block-title">
+        Recurrence risk
+      </div>
+
+      <p>
+        Patterns likely to repeat across similar purchase orders, shipments, releases, supplier terms or logistics arrangements.
+      </p>
+
+    </div>
+
+  </div>
+
+</section>
+
+<section id="review" class="section">
+
+  <div class="section-label">
+    Available review
+  </div>
+
+  <h2>
+    Fixed-scope written exposure note
+  </h2>
+
+  <p>
+    Designed for operations, procurement, logistics and commercial teams handling live arrangements where the next step may affect recoverability, payment, delivery, escalation or loss position.
+  </p>
+
+  <div class="grid">
+
+    <div class="card">
+
+      <div class="price">
+        5-Day Exposure Review — USD 950
+      </div>
+
+      <p>
+        Written operational exposure note delivered within 3–5 business days after receiving the relevant document set and current operating context.
+      </p>
+
+    </div>
+
+    <div class="card">
+
+      <div class="price">
+        Monthly Exposure Desk — USD 1,500/month
+      </div>
+
+      <p>
+        Up to four fixed-scope written reviews per month for recurring procurement, logistics, shipping or commercial operations exposure.
+      </p>
+
+    </div>
+
+  </div>
+
+</section>
+
+<section id="output" class="section">
+
+  <div class="section-label">
+    Output
+  </div>
+
+  <h2>
+    What is delivered
+  </h2>
+
+  <ul>
+    <li>Written exposure note</li>
+    <li>Current procedural position</li>
+    <li>Operational failure points</li>
+    <li>Recoverability risks</li>
+    <li>Questions to resolve before the next operational step</li>
+    <li>Short executive exposure summary</li>
+  </ul>
+
+</section>
+
+<section id="boundary" class="section">
+
+  <div class="section-label">
+    Boundary
+  </div>
+
+  <h2>
+    Operational and commercial only
+  </h2>
+
+  <p>
+    This is not legal advice. No clause drafting. No legal interpretation. No negotiation. No representation. No dispute handling. The review is operational and commercial only.
+  </p>
+
+</section>
+
+<section id="contact" class="section">
+
+  <div class="section-label">
+    Contact
+  </div>
+
+  <h2>
+    Request an exposure review
+  </h2>
+
+  <p>
+    Submit the current operating context, arrangement type and decision deadline.
+  </p>
+
+  <div class="card">
+
+    <div class="grid">
+
+      <div class="field">
+        <label for="arrangement-type">Arrangement type</label>
+        <input id="arrangement-type" type="text" placeholder="Purchase order, shipment, supplier terms, logistics arrangement, release sequence, other" />
+      </div>
+
+      <div class="field">
+        <label for="current-stage">Current stage</label>
+        <select id="current-stage">
+          <option value="">Select one</option>
+          <option>Already moving</option>
+          <option>Delivery pending</option>
+          <option>Documentation pending</option>
+          <option>Payment / release pending</option>
+          <option>Delay or disruption active</option>
+          <option>Escalation likely</option>
+          <option>Recurring issue</option>
+        </select>
+      </div>
+
+    </div>
+
+    <div class="field">
+      <label for="operating-context">Current operating context</label>
+      <textarea id="operating-context" placeholder="What is moving, who controls the next step, and what decision is now pending?" required></textarea>
+    </div>
+
+    <div class="field">
+      <label for="exposure">Main exposure</label>
+      <textarea id="exposure" placeholder="Delivery, documentation, payment trigger, customs, inspection, notice, escalation, demurrage, delay, recoverability, supplier coordination." required></textarea>
+    </div>
+
+    <div class="grid">
+
+      <div class="field">
+        <label for="deadline">Decision deadline</label>
+        <input id="deadline" type="text" placeholder="e.g. 48 hours / this week / before next release" />
+      </div>
+
+      <div class="field">
+        <label for="scope-requested">Requested scope</label>
+        <select id="scope-requested">
+          <option value="">Select one</option>
+          <option>5-Day Exposure Review</option>
+          <option>Monthly Exposure Desk</option>
+          <option>Not sure yet</option>
+        </select>
+      </div>
+
+    </div>
+
+    <div class="grid">
+
+      <div class="field">
+        <label for="name">Name</label>
+        <input id="name" type="text" required />
+      </div>
+
+      <div class="field">
+        <label for="email">Email</label>
+        <input id="email" type="email" required />
+      </div>
+
+    </div>
+
+    <div class="field">
+      <label for="linkedin">LinkedIn or company URL</label>
+      <input id="linkedin" type="text" />
+    </div>
+
+    <div style="display:none;">
+      <input id="botcheck" type="checkbox" />
+    </div>
+
+    <button class="submit" id="submit-btn" onclick="submitExposureForm()">
+      Submit
+    </button>
+
+    <div class="success-msg" id="success-msg">
+      Submission received.
+    </div>
+
+    <div class="error-msg" id="error-msg">
+      Something went wrong. Please try again or write directly to hugo@contractbreakpoint.com.
+    </div>
+
+  </div>
+
+</section>
+
+</main>
+
+<footer>
+
+  Operational Exposure Review
+
+  <div class="footer-meta">
+
+    Operated by Hugo Federico Hernandez Varela<br>
+
+    Procurement · logistics · shipping · operational exposure<br><br>
+
+    <a href="https://www.linkedin.com/in/hfh2309/" target="_blank">
+      LinkedIn
+    </a>
+
+    ·
+
+    <a href="https://x.com/HugoFHernandezV" target="_blank">
+      X
+    </a>
+
+  </div>
+
+</footer>
+
+<script>
+function v(id){
+  return document.getElementById(id).value.trim();
+}
+
+function isValidEmail(email){
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+}
+
+function resetMessages(){
+  document.getElementById('success-msg').style.display = 'none';
+  document.getElementById('error-msg').style.display = 'none';
+}
+
+async function sendSubmission(data){
+
+  var btn = document.getElementById('submit-btn');
+
+  btn.disabled = true;
+  btn.textContent = 'Sending...';
+
+  resetMessages();
+
+  try{
+
+    var res = await fetch('https://api.web3forms.com/submit', {
+      method:'POST',
+      headers:{ 'Content-Type':'application/json' },
+      body:JSON.stringify(data)
+    });
+
+    var json = await res.json();
+
+    if(json.success){
+      document.getElementById('success-msg').style.display = 'block';
+      document.getElementById('error-msg').style.display = 'none';
+      btn.style.display = 'none';
+    } else {
+      throw new Error('failed');
+    }
+
+  } catch(e){
+
+    document.getElementById('error-msg').style.display = 'block';
+
+    btn.disabled = false;
+    btn.textContent = 'Submit';
+  }
+}
+
+async function submitExposureForm(){
+
+  var name = v('name');
+  var email = v('email');
+  var operatingContext = v('operating-context');
+  var exposure = v('exposure');
+
+  if(document.getElementById('botcheck').checked){
+    return;
+  }
+
+  if(!name || !email || !operatingContext || !exposure){
+    alert('Please fill in Name, Email, Current operating context, and Main exposure.');
+    return;
+  }
+
+  if(!isValidEmail(email)){
+    alert('Please enter a valid email address.');
+    return;
+  }
+
+  var data = {
+    access_key: '5986f283-7f45-4503-8eba-f1c5bb0a7096',
+    subject: 'Operational Exposure Review Request',
+    from_name: name,
+    email: email,
+    'Arrangement type': v('arrangement-type'),
+    'Current stage': v('current-stage'),
+    'Current operating context': operatingContext,
+    'Main exposure': exposure,
+    'Decision deadline': v('deadline'),
+    'Requested scope': v('scope-requested'),
+    'LinkedIn / company URL': v('linkedin')
+  };
+
+  await sendSubmission(data);
+}
+</script>
+
+</body>
+</html>
