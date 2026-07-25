@@ -446,6 +446,42 @@ textarea:focus{
   border-color:#4d5b5e;
 }
 
+.radio-group{
+  display:flex;
+
+  gap:24px;
+  flex-wrap:wrap;
+}
+
+.radio-option{
+  display:flex;
+  align-items:center;
+
+  gap:8px;
+
+  color:var(--text);
+
+  font-size:14px;
+
+  cursor:pointer;
+}
+
+.radio-option input[type="radio"]{
+  width:auto;
+
+  accent-color:var(--accent);
+
+  cursor:pointer;
+}
+
+.field-helper{
+  color:var(--dim);
+
+  font-size:12px;
+
+  line-height:1.5;
+}
+
 .notice-signed{
   display:none;
 
@@ -834,13 +870,19 @@ footer{
   </p>
   <div class="card">
 <div class="field">
-  <label for="stage">Contract status</label>
+  <label id="stage-label">Where are you?</label>
 
-  <select id="stage" onchange="checkStage(this)">
-    <option value="">Select one</option>
-    <option value="before">Before signature</option>
-    <option value="signed">Already signed</option>
-  </select>
+  <div class="radio-group" role="radiogroup" aria-labelledby="stage-label">
+    <label class="radio-option">
+      <input type="radio" name="stage" value="before" onchange="checkStage(this)" />
+      Before signing
+    </label>
+
+    <label class="radio-option">
+      <input type="radio" name="stage" value="signed" onchange="checkStage(this)" />
+      Already signed
+    </label>
+  </div>
 </div>
 
 <div class="notice-signed" id="signed-notice">
@@ -850,117 +892,24 @@ footer{
 
 <div id="before-fields" style="display:none;">
 
-  <div class="grid">
+  <div class="field">
+    <label for="risk">What's the biggest risk you see?</label>
 
-    <div class="field">
-      <label for="contract-type">Contract type</label>
+    <textarea id="risk" placeholder="Don't know if we're covered if they back out." required></textarea>
 
-      <input id="contract-type" type="text" placeholder="Supply, EPC, Charter, Services, Other" />
-    </div>
-
-    <div class="field">
-      <label for="jurisdiction">Jurisdiction(s)</label>
-
-      <input id="jurisdiction" type="text" placeholder="Country / governing law / forum" />
-    </div>
-
-  </div>
-
-  <div class="grid">
-
-    <div class="field">
-      <label for="stage-detail">Execution timing relative to signature</label>
-
-      <select id="stage-detail">
-        <option value="">Select one</option>
-        <option>Draft under review</option>
-        <option>Legal review ongoing</option>
-        <option>Commercial alignment pending</option>
-        <option>Signature expected &lt;7 days</option>
-        <option>Signature expected &lt;30 days</option>
-        <option>Signature imminent</option>
-      </select>
-    </div>
-
-    <div class="field">
-      <label for="counterparty">Counterparty type</label>
-
-      <select id="counterparty">
-        <option value="">Select one</option>
-        <option>Supplier</option>
-        <option>Trader</option>
-        <option>Carrier</option>
-        <option>Contractor</option>
-        <option>State entity</option>
-        <option>Other</option>
-      </select>
-    </div>
-
+    <div class="field-helper">One sentence is enough.</div>
   </div>
 
   <div class="field">
-    <label for="operational-structure">Operational structure</label>
+    <label for="email">Email</label>
 
-    <textarea id="operational-structure" placeholder="Routing, delivery structure, timing dependency, inspection regime, escalation chain or execution conditions relevant to the agreement." required></textarea>
-  </div>
+    <input id="email" type="email" required />
 
-  <div class="field">
-    <label for="time-sensitive">Time-sensitive execution conditions</label>
-
-    <textarea id="time-sensitive" placeholder="Delivery windows, notices, inspections, routing dependencies, customs, sequencing or continuity constraints." required></textarea>
-  </div>
-
-  <div class="grid">
-
-    <div class="field">
-      <label for="time-to-sig">Time to signature</label>
-
-      <input id="time-to-sig" type="text" placeholder="e.g. 3 days / 2 weeks" />
-    </div>
-
-    <div class="field">
-      <label for="legal-review">Has legal reviewed this?</label>
-
-      <select id="legal-review">
-        <option value="">Select one</option>
-        <option>Yes</option>
-        <option>No</option>
-        <option>Unknown</option>
-      </select>
-    </div>
-
-  </div>
-
-  <div class="field">
-    <label for="exposure">Financial exposure already committed</label>
-
-    <input id="exposure" type="text" placeholder="Yes / No / amount if applicable" />
-  </div>
-
-  <div class="grid">
-
-    <div class="field">
-      <label for="name">Name</label>
-
-      <input id="name" type="text" required />
-    </div>
-
-    <div class="field">
-      <label for="email">Email</label>
-
-      <input id="email" type="email" required />
-    </div>
-
-  </div>
-
-  <div class="field">
-    <label for="linkedin">LinkedIn or company URL</label>
-
-    <input id="linkedin" type="text" />
+    <div class="field-helper">I'll reply personally if I believe I can help.</div>
   </div>
 
   <button class="submit" id="submit-before-btn" onclick="submitBeforeForm()">
-    Submit
+    Check if I'm protected
   </button>
 
 </div>
@@ -1110,6 +1059,12 @@ function checkStage(sel){
 
   resetMessages();
 
+  var successEl = document.getElementById('success-msg');
+  successEl.innerHTML = 'Submission received.';
+
+  document.getElementById('submit-before-btn').style.display = '';
+  document.getElementById('submit-signed-btn').style.display = '';
+
   if(sel.value === 'before'){
 
     notice.style.display = 'none';
@@ -1130,9 +1085,10 @@ function checkStage(sel){
   }
 }
 
-async function sendSubmission(data, buttonId){
+async function sendSubmission(data, buttonId, successHtml){
 
   var btn = document.getElementById(buttonId);
+  var originalLabel = btn.textContent;
 
   btn.disabled = true;
   btn.textContent = 'Sending...';
@@ -1150,7 +1106,11 @@ async function sendSubmission(data, buttonId){
     var json = await res.json();
 
     if(json.success){
-      document.getElementById('success-msg').style.display = 'block';
+      var successEl = document.getElementById('success-msg');
+      if(successHtml){
+        successEl.innerHTML = successHtml;
+      }
+      successEl.style.display = 'block';
       document.getElementById('error-msg').style.display = 'none';
       btn.style.display = 'none';
     } else {
@@ -1162,19 +1122,17 @@ async function sendSubmission(data, buttonId){
     document.getElementById('error-msg').style.display = 'block';
 
     btn.disabled = false;
-    btn.textContent = 'Submit';
+    btn.textContent = originalLabel;
   }
 }
 
 async function submitBeforeForm(){
 
-  var name = v('name');
+  var risk = v('risk');
   var email = v('email');
-  var operationalStructure = v('operational-structure');
-  var timeSensitive = v('time-sensitive');
 
-  if(!name || !email || !operationalStructure || !timeSensitive){
-    alert('Please fill in Name, Email, Operational structure, and Time-sensitive execution conditions.');
+  if(!risk || !email){
+    alert('Please fill in the risk and your email.');
     return;
   }
 
@@ -1185,23 +1143,17 @@ async function submitBeforeForm(){
 
   var data = {
     access_key: '5986f283-7f45-4503-8eba-f1c5bb0a7096',
-    subject: 'Pre-Signature Exposure',
-    from_name: name,
+    subject: 'Pre-Signature Risk Check',
     email: email,
-    'Contract status': 'Before signature',
-    'Contract type': v('contract-type'),
-    'Jurisdiction': v('jurisdiction'),
-    'Execution timing relative to signature': v('stage-detail'),
-    'Counterparty type': v('counterparty'),
-    'Operational structure': operationalStructure,
-    'Time-sensitive execution conditions': timeSensitive,
-    'Time to signature': v('time-to-sig'),
-    'Legal reviewed': v('legal-review'),
-    'Financial exposure': v('exposure'),
-    'LinkedIn / company URL': v('linkedin')
+    'Contract status': 'Before signing',
+    'Biggest risk': risk
   };
 
-  await sendSubmission(data, 'submit-before-btn');
+  await sendSubmission(
+    data,
+    'submit-before-btn',
+    "Thanks.<br><br>I'll review what you sent and let you know whether I believe there's a genuine execution risk worth investigating.<br><br>You'll hear from me within one business day."
+  );
 }
 
 async function submitSignedForm(){
