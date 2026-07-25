@@ -885,11 +885,6 @@ footer{
   </div>
 </div>
 
-<div class="notice-signed" id="signed-notice">
-  Pre-signature admissibility review is no longer applicable.<br><br>
-  If operational continuity has already degraded, describe the current execution condition briefly.
-</div>
-
 <div id="before-fields" style="display:none;">
 
   <div class="field">
@@ -916,87 +911,24 @@ footer{
 
 <div id="signed-fields" style="display:none;">
 
-  <div class="grid">
+  <div class="field">
+    <label for="signed-problem">What's your biggest problem right now?</label>
 
-    <div class="field">
-      <label for="signed-contract-type">Contract type</label>
+    <textarea id="signed-problem" placeholder="Payment stopped after delivery." required></textarea>
 
-      <input id="signed-contract-type" type="text" placeholder="Supply, EPC, Charter, Services, Other" />
-    </div>
-
-    <div class="field">
-      <label for="signed-jurisdiction">Jurisdiction(s)</label>
-
-      <input id="signed-jurisdiction" type="text" placeholder="Country / governing law / forum" />
-    </div>
-
+    <div class="field-helper">One sentence is enough.</div>
   </div>
 
   <div class="field">
-    <label for="current-condition">Current execution condition</label>
+    <label for="signed-email">Email</label>
 
-    <textarea id="current-condition" placeholder="Describe the current operational condition briefly." required></textarea>
-  </div>
+    <input id="signed-email" type="email" required />
 
-  <div class="field">
-    <label for="operational-change">What changed operationally</label>
-
-    <textarea id="operational-change" placeholder="Route, timing, access, clearance, delivery, inspection, counterparty performance, notice or continuity condition." required></textarea>
-  </div>
-
-  <div class="field">
-    <label for="commercial-consequence">Immediate commercial consequence</label>
-
-    <textarea id="commercial-consequence" placeholder="Delay, blocked delivery, payment exposure, claims pressure, insurance friction, recovery uncertainty or operational interruption."></textarea>
-  </div>
-
-  <div class="grid">
-
-    <div class="field">
-      <label for="counterparty-status">Counterparty status</label>
-
-      <select id="counterparty-status">
-        <option value="">Select one</option>
-        <option>Performing</option>
-        <option>Delayed</option>
-        <option>Disputed</option>
-        <option>Unresponsive</option>
-        <option>Unknown</option>
-      </select>
-    </div>
-
-    <div class="field">
-      <label for="signed-exposure">Financial exposure already committed</label>
-
-      <input id="signed-exposure" type="text" placeholder="Yes / No / amount if applicable" />
-    </div>
-
-  </div>
-
-  <div class="grid">
-
-    <div class="field">
-      <label for="signed-name">Name</label>
-
-      <input id="signed-name" type="text" required />
-    </div>
-
-    <div class="field">
-      <label for="signed-email">Email</label>
-
-      <input id="signed-email" type="email" required />
-    </div>
-
-  </div>
-
-  <div class="field">
-    <label for="signed-linkedin">LinkedIn or company URL</label>
-
-    <input id="signed-linkedin" type="text" />
+    <div class="field-helper">I'll reply personally if I believe I can help.</div>
   </div>
 
   <button class="submit" id="submit-signed-btn" onclick="submitSignedForm()">
-    Submit
+    Check if CEP can help
   </button>
 
 </div>
@@ -1053,7 +985,6 @@ function resetMessages(){
 
 function checkStage(sel){
 
-  var notice = document.getElementById('signed-notice');
   var beforeFields = document.getElementById('before-fields');
   var signedFields = document.getElementById('signed-fields');
 
@@ -1067,19 +998,16 @@ function checkStage(sel){
 
   if(sel.value === 'before'){
 
-    notice.style.display = 'none';
     beforeFields.style.display = 'block';
     signedFields.style.display = 'none';
 
   } else if(sel.value === 'signed'){
 
-    notice.style.display = 'block';
     beforeFields.style.display = 'none';
     signedFields.style.display = 'block';
 
   } else {
 
-    notice.style.display = 'none';
     beforeFields.style.display = 'none';
     signedFields.style.display = 'none';
   }
@@ -1158,13 +1086,11 @@ async function submitBeforeForm(){
 
 async function submitSignedForm(){
 
-  var name = v('signed-name');
+  var problem = v('signed-problem');
   var email = v('signed-email');
-  var currentCondition = v('current-condition');
-  var operationalChange = v('operational-change');
 
-  if(!name || !email || !currentCondition || !operationalChange){
-    alert('Please fill in Name, Email, Current execution condition, and What changed operationally.');
+  if(!problem || !email){
+    alert('Please fill in the problem and your email.');
     return;
   }
 
@@ -1176,20 +1102,16 @@ async function submitSignedForm(){
   var data = {
     access_key: '5986f283-7f45-4503-8eba-f1c5bb0a7096',
     subject: 'Execution Condition Intake',
-    from_name: name,
     email: email,
     'Contract status': 'Already signed',
-    'Contract type': v('signed-contract-type'),
-    'Jurisdiction': v('signed-jurisdiction'),
-    'Current execution condition': currentCondition,
-    'What changed operationally': operationalChange,
-    'Immediate commercial consequence': v('commercial-consequence'),
-    'Counterparty status': v('counterparty-status'),
-    'Financial exposure': v('signed-exposure'),
-    'LinkedIn / company URL': v('signed-linkedin')
+    'Biggest problem': problem
   };
 
-  await sendSubmission(data, 'submit-signed-btn');
+  await sendSubmission(
+    data,
+    'submit-signed-btn',
+    "Thanks.<br><br>I'll review what you sent and let you know honestly whether I believe CEP can help in your situation.<br><br>You'll hear from me within one business day."
+  );
 }
 </script>
 </body>
