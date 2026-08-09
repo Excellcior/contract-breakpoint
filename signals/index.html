@@ -8,10 +8,14 @@
 
 <meta
   name="description"
-  content="Observed execution conditions affecting contractual continuity across shipping, logistics, insurance, clearance and payment paths."
+  content="Persistent execution conditions, current operational manifestations and documented field observations affecting contractual continuity."
 />
 
 <link rel="canonical" href="https://contractbreakpoint.com/signals/" />
+<meta property="og:title" content="Execution Signals | Contract Breakpoint Analysis" />
+<meta property="og:description" content="Persistent execution conditions, current operational manifestations and documented field observations affecting contractual continuity." />
+<meta property="og:url" content="https://contractbreakpoint.com/signals/" />
+<meta property="og:type" content="website" />
 <style>
 :root{
   --max: 980px;
@@ -204,10 +208,67 @@ a{
   border-bottom:1px solid #4d5b5e;
 }
 
+.notes-intro{
+  max-width:660px;
+  margin:0 0 28px;
+  color:var(--muted);
+  font-size:15px;
+}
+
+.note-entry{
+  border-top:1px solid var(--line-soft);
+  padding:26px 0 30px;
+  display:grid;
+  grid-template-columns:230px 1fr;
+  gap:36px;
+}
+
+.note-entry h2{
+  margin:0;
+  font-size:13px;
+  line-height:1.5;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:var(--accent);
+  font-weight:500;
+}
+
+.note-entry h2 a{
+  border-bottom:none;
+}
+
+.note-deck{
+  margin:0 0 14px;
+  color:var(--muted);
+  font-size:15px;
+}
+
+.read-note{
+  color:var(--accent);
+  border-bottom:none;
+  font-size:11px;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+}
+
+.manifestation-note{
+  border-top:1px solid var(--line-soft);
+  margin:0;
+  padding-top:24px;
+  color:var(--dim);
+  font-size:12px;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+}
+
 @media (max-width:720px){
   main{ padding:32px 20px 70px; }
   h1{ font-size:34px; }
   .condition{
+    grid-template-columns:1fr;
+    gap:12px;
+  }
+  .note-entry{
     grid-template-columns:1fr;
     gap:12px;
   }
@@ -228,7 +289,7 @@ a{
 
   <h1>Execution<br>Signals</h1>
 
-  <div class="updated">Updated 26 May 2026</div>
+  <div class="updated">Updated 9 August 2026</div>
 
   <p class="intro">
     Execution conditions continue shifting faster than contractual structures adapt.
@@ -298,49 +359,83 @@ a{
   <div class="condition">
     <h2>Strait of Hormuz</h2>
     <p>
-      Escort-dependent routing, sanctions exposure and war-risk instability continue fragmenting execution continuity across Gulf transit corridors.
+      Normal transit remains contingent on access conditions outside the commercial parties’ control. Routing availability, war-risk exposure and LNG/oil movement remain capable of changing independently of contractual delivery assumptions.
     </p>
   </div>
 
   <div class="condition">
     <h2>Red Sea / Suez corridors</h2>
     <p>
-      Rerouting persistence continues compressing scheduling reliability, downstream berth sequencing and equipment recovery continuity.
+      Renewed threats and vessel course changes continue demonstrating that route availability can change faster than downstream schedules, berth sequences and contractual timing can be realigned.
     </p>
   </div>
 
   <div class="condition">
-    <h2>LNG shipping continuity</h2>
+    <h2>LNG supply continuity</h2>
     <p>
-      Vessel availability, rerouting pressure and elongated ton-mile configurations continue narrowing allocation flexibility across execution-sensitive cargoes.
+      The Qatar disruption exposed the difference between contracted supply and executable delivery. Production source, export corridor, replacement cargo availability and portfolio flexibility can become separate performance variables.
     </p>
   </div>
 
   <div class="condition">
-    <h2>Customs and clearance dependency</h2>
+    <h2>Priority berthing</h2>
     <p>
-      Non-harmonized approvals, administrative sequencing and fragmented processing windows continue extending documentary execution pressure.
+      Mormugao’s 2026 priority-berthing directive introduced a discretionary external trigger into an otherwise observable berth sequence: arrival order remains relevant, but no longer necessarily controls berth order.
     </p>
   </div>
 
   <div class="condition">
-    <h2>Insurance and P&amp;I exposure</h2>
+    <h2>Published schedule divergence</h2>
     <p>
-      Coverage continuity increasingly diverges across routing, counterparties and sanctions-linked operational environments.
+      Tema demonstrated the opposite failure mode: the schedule continued to exist while operators ceased treating its published sequence as operationally reliable.
     </p>
   </div>
+
+  <p class="manifestation-note">
+    Observed conditions represent recurring execution patterns, not isolated events.
+  </p>
+</section>
+
+<section class="group" aria-labelledby="execution-notes-heading">
+  <div class="group-title" id="execution-notes-heading">Execution Notes</div>
+
+  <p class="notes-intro">
+    Detailed field observations where an execution condition became commercially or contractually visible.
+  </p>
+
+  <article class="note-entry">
+    <h2><a href="/notes/mormugao-priority-berthing/">Mormugao Priority Berthing</a></h2>
+    <div>
+      <p class="note-deck">Arrival Order No Longer Determines Berth Order</p>
+      <a class="read-note" href="/notes/mormugao-priority-berthing/">Read note &rarr;</a>
+    </div>
+  </article>
+
+  <article class="note-entry">
+    <h2><a href="/notes/tema-petroleum-berth/">Tema Petroleum Berth</a></h2>
+    <div>
+      <p class="note-deck">Laycan Sequence Failure Without a Berthing Stoppage</p>
+      <a class="read-note" href="/notes/tema-petroleum-berth/">Read note &rarr;</a>
+    </div>
+  </article>
+
+  <article class="note-entry">
+    <h2><a href="/notes/qatarenergy-lng-supply-reliability/">QatarEnergy LNG</a></h2>
+    <div>
+      <p class="note-deck">When Supply Reliability Becomes a Contract Variable</p>
+      <a class="read-note" href="/notes/qatarenergy-lng-supply-reliability/">Read note &rarr;</a>
+    </div>
+  </article>
 </section>
 
 <footer class="footer">
-  Observed conditions represent recurring execution patterns, not isolated events.
-
   <div class="contact">
     Written intake:
     <a href="mailto:hugo@contractbreakpoint.com">hugo@contractbreakpoint.com</a>
   </div>
 
   <div class="review-line">
-    Pre-signature structural pre-signature analysis available for execution-sensitive contracts.
+    Pre-signature structural analysis available for execution-sensitive contracts.
   </div>
 
   <div class="cta-block">
