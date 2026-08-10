@@ -3,14 +3,18 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Contract Breakpoint Analysis</title>
+<title>Contract Breakpoint Analysis | Pre-Signature Contract Analysis</title>
 
 <meta
   name="description"
-  content="Contract Breakpoint Analysis is a pre-signature admissibility surface for execution-sensitive commercial agreements."
+  content="Contract Breakpoint Analysis examines one commercial contract before signature to identify where operational incidents can break contractual protection. Fixed fee €12,000."
 />
 
 <link rel="canonical" href="https://contractbreakpoint.com/" />
+<meta property="og:title" content="Contract Breakpoint Analysis | Pre-Signature Contract Analysis" />
+<meta property="og:description" content="Contract Breakpoint Analysis examines one commercial contract before signature to identify where operational incidents can break contractual protection. Fixed fee €12,000." />
+<meta property="og:url" content="https://contractbreakpoint.com/" />
+<meta property="og:type" content="website" />
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -19,7 +23,8 @@
       "@type": "WebSite",
       "@id": "https://contractbreakpoint.com/#website",
       "url": "https://contractbreakpoint.com/",
-      "name": "Contract Breakpoint Analysis"
+      "name": "Contract Breakpoint",
+      "alternateName": "Contract Breakpoint Analysis"
     },
     {
       "@type": "Service",
@@ -283,6 +288,13 @@ main{
 
 .hero-cta:hover{
   opacity:.9;
+}
+
+.fee-block{
+  border-top:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+  margin:28px 0 20px;
+  padding:20px 0 4px;
 }
 
 .post-sig-link{
@@ -661,6 +673,7 @@ footer{
 <a href="#fees">Fees</a>
 <a href="/notes/">Notes</a>
 <a href="/signals/">Signals</a>
+<a href="/about/">About</a>
 <a href="#faq">FAQ</a>
 <a href="#contact">Contact</a>
   </nav>
@@ -671,26 +684,37 @@ footer{
     PRE-SIGNATURE DECISION ANALYSIS
   </div>
   <h1>
-    See where the contract breaks before you sign.
+    Contract Breakpoint Analysis
   </h1>
   <div class="hero-intro">
 <p class="statement">
-  Contract Breakpoint Analysis identifies where predictable operational incidents will break an execution-sensitive commercial agreement.
+  A pre-signature analysis of one execution-sensitive commercial contract.
 </p>
 
 <p>
-  For procurement, commercial and trading leaders responsible for material contractual exposure.
+  CBA identifies where predictable operational incidents can break the agreement, trigger escalation failures or undermine claims and recoverability.
 </p>
 
-<a class="hero-cta" href="#contact">Request pre-signature analysis</a>
+<p>It does not predict whether those incidents will occur.</p>
+
+<p>For commercially accountable procurement, commercial and trading leaders reviewing a material contract before signature.</p>
+
+<p>Not legal advice. Not contract drafting or renegotiation. Not consulting. Not post-signature analysis.</p>
+
+<div class="fee-block">
+  <p class="statement">Fixed fee: &euro;12,000 per contract.</p>
+  <p>One contract = one analysis.<br>Subject to eligibility.</p>
+</div>
+
+<a class="hero-cta" href="#contact">Submit a CBA request</a>
 
 <p class="conditions-link">
-  One agreement. One analysis. Written-only.
+  One contract. One analysis. Written-only.
 </p>
   </div>
 </section>
 <p class="post-sig-link">
-  <a href="#cep">Already signed? View the post-signature path &rarr;</a>
+  Already signed?<br>CBA no longer applies after signature.<br><a href="#cep">Post-signature path &rarr;</a>
 </p>
 <section id="failure" class="section">
   <div class="section-label">
@@ -790,7 +814,7 @@ footer{
   <p>
     One complete analysis. Subject to eligibility. No hourly billing, discounts, bundles or reusable outputs.
   </p>
-  <a class="hero-cta" href="#contact">Request a pre-signature analysis</a>
+  <a class="conditions-link" href="#contact">Submit a CBA request</a>
 </section>
 <section id="signals-preview" class="section">
   <div class="section-label">
@@ -897,7 +921,7 @@ footer{
     &euro;2,500 per month
   </p>
 
-  <a class="hero-cta" href="#contact">Start a post-signature request</a>
+  <a class="conditions-link" href="#contact">Post-signature path</a>
 
   <div class="conditions-link">
     One signed contract. Written procedural protection.
@@ -994,22 +1018,25 @@ footer{
 </section>
 <section id="contact" class="section">
   <div class="section-label">
-    Contact
+    CBA REQUEST
   </div>
   <h2>
-    Pre-signature contact
+    CBA request
   </h2>
   <p>
-    Post-signature submissions are not processed through Contract Breakpoint Analysis.
+    CBA applies to one specific commercial contract before signature. The fixed fee is &euro;12,000, subject to eligibility.
   </p>
   <div class="card">
+<div class="field"><label for="name">Name</label><input id="name" type="text" required /></div>
+<div class="field"><label for="email">Work email</label><input id="email" type="email" required /></div>
+<div class="field"><label for="company">Company</label><input id="company" type="text" required /></div>
 <div class="field">
-  <label id="stage-label">Where are you?</label>
+  <label id="stage-label">Contract status</label>
 
   <div class="radio-group" role="radiogroup" aria-labelledby="stage-label">
     <label class="radio-option">
-      <input type="radio" name="stage" value="before" onchange="checkStage(this)" />
-      Before signing
+      <input type="radio" name="stage" value="before" onchange="checkStage(this)" required />
+      Not yet signed
     </label>
 
     <label class="radio-option">
@@ -1021,58 +1048,29 @@ footer{
 
 <div id="before-fields" style="display:none;">
 
-  <div class="field">
-    <label for="risk">What's the biggest risk you see?</label>
-
-    <textarea id="risk" placeholder="e.g. They can walk away after we've committed production." required></textarea>
-
-    <div class="field-helper">One sentence is enough.</div>
-  </div>
-
-  <div class="field">
-    <label for="email">Email</label>
-
-    <input id="email" type="email" required />
-
-    <div class="field-helper">I'll reply personally if I believe I can help.</div>
-  </div>
+  <div class="field"><label for="role">Your role</label><input id="role" type="text" required /></div>
+  <div class="field"><label for="sector">Contract / sector</label><input id="sector" type="text" required /></div>
+  <div class="field"><label for="context">Context</label><textarea id="context"></textarea><div class="field-helper">Briefly describe the agreement and why it is being reviewed now. Do not include confidential contract text at this stage.</div></div>
 
   <button class="submit" id="submit-before-btn" onclick="submitBeforeForm()">
-    Check if I'm protected
+    Submit CBA request
   </button>
 
 </div>
 
 <div id="signed-fields" style="display:none;">
-
-  <div class="field">
-    <label for="signed-problem">What's your biggest problem right now?</label>
-
-    <textarea id="signed-problem" placeholder="e.g. Payment stopped after delivery." required></textarea>
-
-    <div class="field-helper">One sentence is enough.</div>
-  </div>
-
-  <div class="field">
-    <label for="signed-email">Email</label>
-
-    <input id="signed-email" type="email" required />
-
-    <div class="field-helper">I'll reply personally if I believe I can help.</div>
-  </div>
-
-  <button class="submit" id="submit-signed-btn" onclick="submitSignedForm()">
-    Check if CEP can help
-  </button>
-
+  <div class="notice-signed" style="display:block">CBA applies only before signature. This agreement is not eligible for Contract Breakpoint Analysis.<br><br><a href="#cep">Post-signature path</a></div>
 </div>
 
+<p class="field-helper">Submitted information is used only to assess and respond to this request.</p>
+<p class="field-helper">Prefer email?<br><a href="mailto:hugo@contractbreakpoint.com">hugo@contractbreakpoint.com</a></p>
+
 <div class="success-msg" id="success-msg">
-  Submission received.
+  Request received. If the contract is eligible for CBA, you will receive a written response.
 </div>
 
 <div class="error-msg" id="error-msg">
-  Something went wrong. Please try again or write directly to hugo@contractbreakpoint.com.
+  The request could not be sent. Please email hugo@contractbreakpoint.com.
 </div>
   </div>
 </section>
@@ -1091,6 +1089,10 @@ footer{
     >
       LinkedIn
     </a>
+
+    &middot;
+
+    <a href="/about/">About</a>
 
     ·
 
@@ -1124,11 +1126,7 @@ function checkStage(sel){
 
   resetMessages();
 
-  var successEl = document.getElementById('success-msg');
-  successEl.innerHTML = 'Submission received.';
-
   document.getElementById('submit-before-btn').style.display = '';
-  document.getElementById('submit-signed-btn').style.display = '';
 
   if(sel.value === 'before'){
 
@@ -1190,11 +1188,15 @@ async function sendSubmission(data, buttonId, successHtml){
 
 async function submitBeforeForm(){
 
-  var risk = v('risk');
+  var name = v('name');
   var email = v('email');
+  var company = v('company');
+  var role = v('role');
+  var sector = v('sector');
+  var context = v('context');
 
-  if(!risk || !email){
-    alert('Please fill in the risk and your email.');
+  if(!name || !email || !company || !role || !sector || !document.querySelector('input[name="stage"]:checked')){
+    alert('Please complete all required fields.');
     return;
   }
 
@@ -1205,46 +1207,20 @@ async function submitBeforeForm(){
 
   var data = {
     access_key: '5986f283-7f45-4503-8eba-f1c5bb0a7096',
-    subject: 'Pre-Signature Risk Check',
+    subject: 'CBA request',
     email: email,
-    'Contract status': 'Before signing',
-    'Biggest risk': risk
+    name: name,
+    company: company,
+    'Contract status': 'Not yet signed',
+    'Your role': role,
+    'Contract / sector': sector,
+    context: context
   };
 
   await sendSubmission(
     data,
     'submit-before-btn',
-    "Thanks.<br><br>I'll review what you sent and let you know whether I believe there's a genuine execution risk worth investigating.<br><br>You'll hear from me within one business day."
-  );
-}
-
-async function submitSignedForm(){
-
-  var problem = v('signed-problem');
-  var email = v('signed-email');
-
-  if(!problem || !email){
-    alert('Please fill in the problem and your email.');
-    return;
-  }
-
-  if(!isValidEmail(email)){
-    alert('Please enter a valid email address.');
-    return;
-  }
-
-  var data = {
-    access_key: '5986f283-7f45-4503-8eba-f1c5bb0a7096',
-    subject: 'Execution Condition Intake',
-    email: email,
-    'Contract status': 'Already signed',
-    'Biggest problem': problem
-  };
-
-  await sendSubmission(
-    data,
-    'submit-signed-btn',
-    "Thanks.<br><br>I'll review what you sent and let you know honestly whether I believe CEP can help in your situation.<br><br>You'll hear from me within one business day."
+    'Request received. If the contract is eligible for CBA, you will receive a written response.'
   );
 }
 </script>
