@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Contract Execution Protection | Post-Signature Procedural Protection</title>
+<meta name="description" content="Contract Execution Protection provides written post-signature procedural protection for one signed commercial contract during an active execution-risk window. €2,500 per month." />
+<link rel="canonical" href="https://contractbreakpoint.com/contract-execution-protection/" />
+<meta property="og:title" content="Contract Execution Protection | Post-Signature Procedural Protection" />
+<meta property="og:description" content="Contract Execution Protection provides written post-signature procedural protection for one signed commercial contract during an active execution-risk window. €2,500 per month." />
+<meta property="og:url" content="https://contractbreakpoint.com/contract-execution-protection/" />
+<meta property="og:type" content="website" />
+<link rel="stylesheet" href="/notes/notes.css" />
+<style>
+.cep-page{max-width:760px}
+.cep-section{border-top:1px solid var(--line);padding:34px 0 38px}
+.section-label{color:var(--dim);font-size:11px;letter-spacing:.34em;text-transform:uppercase;margin-bottom:26px}
+.cep-section h2{margin:0 0 18px;font-size:24px;line-height:1.2;font-weight:500}
+.cep-section p{max-width:700px;color:var(--muted);margin:0 0 18px;font-size:15px}
+.card{margin-top:26px;border:1px solid var(--line);background:rgba(255,255,255,.015);padding:22px;border-radius:14px}
+.field{display:flex;flex-direction:column;gap:8px;margin-bottom:16px}
+label{color:var(--muted);font-size:13px;letter-spacing:.04em}
+input,textarea{width:100%;border:1px solid var(--line);border-radius:10px;padding:13px 14px;background:#0c1214;color:var(--text);font:inherit;line-height:1.4}
+textarea{min-height:120px;resize:vertical}
+input:focus,textarea:focus{outline:none;border-color:#4d5b5e}
+.field-helper{color:var(--dim);font-size:12px;line-height:1.5}
+.field-helper a{color:var(--text);border-bottom:1px solid var(--dim)}
+.submit{border:0;background:var(--text);color:var(--bg);border-radius:12px;padding:14px 18px;font:inherit;cursor:pointer}
+.submit:hover{opacity:.9}.submit:disabled{opacity:.5;cursor:not-allowed}
+.success-msg,.error-msg{display:none;margin-top:16px;padding:12px 14px;border-radius:10px;font-size:14px}
+.success-msg{border:1px solid #355742;background:#0f1713;color:#b9d7c3}
+.error-msg{border:1px solid #5c3434;background:#170f0f;color:#d8b4b4}
+@media(max-width:760px){.card{padding:18px}.cep-section h2{font-size:21px}}
+</style>
+</head>
+<body>
+<header class="site-header"><nav class="nav" aria-label="Primary"><a class="brand" href="/">Contract Breakpoint Analysis</a><a href="/about/">About</a><a href="/notes/">Notes</a><a href="/signals/">Signals</a><a href="/#contact">Contact</a></nav></header>
+<main class="cep-page">
+<header class="hero">
+<div class="eyebrow">POST-SIGNATURE PROCEDURAL PROTECTION</div>
+<h1>Contract Execution Protection</h1>
+<p class="deck">Written procedural protection for one signed commercial contract while execution risk is active.</p>
+<p class="deck">Contractual rights can remain available and still be lost through missed notice, timing, escalation, recipient or format requirements.</p>
+</header>
+<section class="cep-section">
+<div class="section-label">WHEN IT APPLIES</div>
+<h2>One signed contract. Active execution risk.</h2>
+<p>Contract Execution Protection applies when a signed contract is under active execution risk and contractual rights remain procedurally preservable.</p>
+<p>It operates during the execution-risk window, not before signature.</p>
+</section>
+<section class="cep-section">
+<div class="section-label">PROCEDURAL PROTECTION</div>
+<h2>Written alerts and confirmations.</h2>
+<p>Written procedural alerts and confirmations are provided during the active execution-risk window.</p>
+<p>The focus is notice, timing, escalation, recipient and format requirements that can affect preservation of contractual protection.</p>
+</section>
+<section class="cep-section">
+<div class="section-label">BOUNDARIES</div>
+<h2>Execution discipline without operational control.</h2>
+<p>No advice, contract interpretation, strategy, drafting, negotiation, operational management or communication with counterparties.</p>
+<p>Contract Execution Protection does not prevent incidents. It protects against procedural loss of contractual protection during execution.</p>
+</section>
+<section class="cep-section">
+<div class="section-label">FEE</div>
+<h2>&euro;2,500 per month.</h2>
+<p>One signed contract. Written procedural protection during the active execution-risk window.</p>
+</section>
+<section class="cep-section" id="request">
+<div class="section-label">CEP REQUEST</div>
+<h2>Contract Execution Protection request</h2>
+<p>This request is for one signed commercial contract under active execution risk.</p>
+<p>Fixed fee: &euro;2,500 per month, subject to eligibility.</p>
+<div class="card">
+<div class="field"><label for="cep-name">Name</label><input id="cep-name" type="text" required /></div>
+<div class="field"><label for="cep-email">Work email</label><input id="cep-email" type="email" required /></div>
+<div class="field"><label for="cep-company">Company</label><input id="cep-company" type="text" required /></div>
+<div class="field"><label for="cep-role">Your role</label><input id="cep-role" type="text" required /></div>
+<div class="field"><label for="cep-sector">Contract / sector</label><input id="cep-sector" type="text" required /></div>
+<div class="field"><label for="cep-issue">Active execution issue</label><textarea id="cep-issue" required></textarea><div class="field-helper">Briefly describe the active execution issue and any immediate notice, timing or escalation deadline. Do not include confidential contract text at this stage.</div></div>
+<button class="submit" id="cep-submit" type="button" onclick="submitCepForm()">Submit CEP request</button>
+<p class="field-helper">Submitted information is used only to assess and respond to this request.</p>
+<p class="field-helper">Prefer email?<br><a href="mailto:hugo@contractbreakpoint.com">hugo@contractbreakpoint.com</a></p>
+<div class="success-msg" id="cep-success">Request received. If the contract is eligible for Contract Execution Protection, you will receive a written response.</div>
+<div class="error-msg" id="cep-error">The request could not be sent. Please email hugo@contractbreakpoint.com.</div>
+</div>
+</section>
+</main>
+<footer>Contract Execution Protection<div class="footer-meta"><a href="/">Contract Breakpoint Analysis</a> &middot; <a href="/about/">About</a> &middot; <a href="/notes/">Execution Notes</a></div></footer>
+<script>
+function cepValue(id){return document.getElementById(id).value.trim()}
+function validCepEmail(email){return /^[^\s@]+@(?:[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?\.)+[a-z]{2,63}$/.test(email)}
+async function submitCepForm(){
+  var name=cepValue('cep-name');
+  var email=cepValue('cep-email');
+  var company=cepValue('cep-company');
+  var role=cepValue('cep-role');
+  var sector=cepValue('cep-sector');
+  var issue=cepValue('cep-issue');
+  if(!name||!email||!company||!role||!sector||!issue){alert('Please complete all required fields.');return}
+  if(!validCepEmail(email)){alert('Please enter a valid email address.');return}
+  var button=document.getElementById('cep-submit');
+  var success=document.getElementById('cep-success');
+  var error=document.getElementById('cep-error');
+  button.disabled=true;button.textContent='Sending...';success.style.display='none';error.style.display='none';
+  try{
+    var response=await fetch('https://api.web3forms.com/submit',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({access_key:'5986f283-7f45-4503-8eba-f1c5bb0a7096',subject:'CEP request',email:email,name:name,company:company,'Your role':role,'Contract / sector':sector,'Active execution issue':issue,request_type:'Contract Execution Protection'})});
+    var result=await response.json();
+    if(!result.success){throw new Error('failed')}
+    success.style.display='block';button.style.display='none';
+  }catch(e){error.style.display='block';button.disabled=false;button.textContent='Submit CEP request'}
+}
+</script>
+</body>
+</html>

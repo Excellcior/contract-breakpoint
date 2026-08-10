@@ -713,9 +713,6 @@ footer{
 </p>
   </div>
 </section>
-<p class="post-sig-link">
-  Already signed?<br>CBA no longer applies after signature.<br><a href="#cep">Post-signature path &rarr;</a>
-</p>
 <section id="failure" class="section">
   <div class="section-label">
     STRUCTURAL FAILURE
@@ -887,46 +884,6 @@ footer{
 </div>
   </div>
 </section>
-<section id="cep" class="section">
-  <div class="section-label">
-    ALREADY SIGNED
-  </div>
-  <h2>
-    Contract Execution Protection
-  </h2>
-  <p>
-    Private post-signature procedural protection for one contract where execution risk is active and contractual rights may be lost through notice, timing, escalation, recipient or format failure.
-  </p>
-  <p>
-    Provides written procedural alerts and confirmations during the active execution-risk window.
-  </p>
-
-  <div class="block-title">
-    Applies when
-  </div>
-
-  <p>
-    One signed contract is under active execution risk and contractual rights remain procedurally preservable.
-  </p>
-
-  <div class="block-title">
-    Excluded
-  </div>
-
-  <p>
-    Advice, contract interpretation, strategy, drafting, negotiation, operational management and communication with counterparties.
-  </p>
-
-  <p class="statement">
-    &euro;2,500 per month
-  </p>
-
-  <a class="conditions-link" href="#contact">Post-signature path</a>
-
-  <div class="conditions-link">
-    One signed contract. Written procedural protection.
-  </div>
-</section>
 <section id="faq" class="section">
   <div class="section-label">
     FAQ
@@ -1006,15 +963,6 @@ footer{
   Written-only. No calls, workshops or methodology transfer.
 </div>
   </div>
-  <div class="faq-item">
-<div class="faq-q">
-  What if the agreement has already been signed?
-</div>
-
-<div class="faq-a">
-  Contract Breakpoint Analysis no longer applies. Contract Execution Protection is a separate post-signature engagement for one signed contract during an active execution-risk window.
-</div>
-  </div>
 </section>
 <section id="contact" class="section">
   <div class="section-label">
@@ -1027,9 +975,11 @@ footer{
     CBA applies to one specific commercial contract before signature. The fixed fee is &euro;12,000, subject to eligibility.
   </p>
   <div class="card">
+<div id="cba-identity-fields">
 <div class="field"><label for="name">Name</label><input id="name" type="text" required /></div>
 <div class="field"><label for="email">Work email</label><input id="email" type="email" required /></div>
 <div class="field"><label for="company">Company</label><input id="company" type="text" required /></div>
+</div>
 <div class="field">
   <label id="stage-label">Contract status</label>
 
@@ -1056,14 +1006,14 @@ footer{
     Submit CBA request
   </button>
 
+  <p class="field-helper">Submitted information is used only to assess and respond to this request.</p>
+  <p class="field-helper">Prefer email?<br><a href="mailto:hugo@contractbreakpoint.com">hugo@contractbreakpoint.com</a></p>
+
 </div>
 
 <div id="signed-fields" style="display:none;">
-  <div class="notice-signed" style="display:block">CBA applies only before signature. This agreement is not eligible for Contract Breakpoint Analysis.<br><br><a href="#cep">Post-signature path</a></div>
+  <div class="notice-signed" style="display:block">This agreement is already signed.<br><br><a href="/contract-execution-protection/">Continue to post-signature protection</a></div>
 </div>
-
-<p class="field-helper">Submitted information is used only to assess and respond to this request.</p>
-<p class="field-helper">Prefer email?<br><a href="mailto:hugo@contractbreakpoint.com">hugo@contractbreakpoint.com</a></p>
 
 <div class="success-msg" id="success-msg">
   Request received. If the contract is eligible for CBA, you will receive a written response.
@@ -1123,6 +1073,7 @@ function checkStage(sel){
 
   var beforeFields = document.getElementById('before-fields');
   var signedFields = document.getElementById('signed-fields');
+  var identityFields = document.getElementById('cba-identity-fields');
 
   resetMessages();
 
@@ -1132,16 +1083,19 @@ function checkStage(sel){
 
     beforeFields.style.display = 'block';
     signedFields.style.display = 'none';
+    identityFields.style.display = 'block';
 
   } else if(sel.value === 'signed'){
 
     beforeFields.style.display = 'none';
     signedFields.style.display = 'block';
+    identityFields.style.display = 'none';
 
   } else {
 
     beforeFields.style.display = 'none';
     signedFields.style.display = 'none';
+    identityFields.style.display = 'block';
   }
 }
 
