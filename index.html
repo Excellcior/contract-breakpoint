@@ -715,6 +715,12 @@ footer{
 </p>
   </div>
 </section>
+<section class="section post-signature-transition" aria-labelledby="already-signed-heading">
+  <div class="section-label">ALREADY SIGNED?</div>
+  <h2 id="already-signed-heading">Already signed?</h2>
+  <p>CBA no longer applies after signature.</p>
+  <div class="conditions-link"><a href="/execution-breakpoint-protection/">Execution Breakpoint Protection &rarr;</a></div>
+</section>
 <section id="failure" class="section">
   <div class="section-label">
     STRUCTURAL FAILURE
@@ -1014,7 +1020,7 @@ footer{
 </div>
 
 <div id="signed-fields" style="display:none;">
-  <div class="notice-signed" style="display:block">This agreement is already signed.<br><br><a href="/contract-execution-protection/">Continue to post-signature protection</a></div>
+  <div class="notice-signed" style="display:block">This agreement is already signed and is not eligible for Contract Breakpoint Analysis.</div>
 </div>
 
 <div class="success-msg" id="success-msg">
@@ -1058,6 +1064,10 @@ footer{
   </div>
 </footer>
 <script>
+if(window.location.hash.toLowerCase()==='#cep'){
+  window.location.replace('/execution-breakpoint-protection/');
+}
+
 function v(id){
   return document.getElementById(id).value.trim();
 }
@@ -1163,7 +1173,8 @@ async function submitBeforeForm(){
 
   var data = {
     access_key: '5986f283-7f45-4503-8eba-f1c5bb0a7096',
-    subject: 'CBA request',
+    subject: '[CBA REQUEST]',
+    product: 'CBA',
     email: email,
     name: name,
     company: company,
