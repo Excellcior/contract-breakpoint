@@ -1,6 +1,6 @@
 MIRROR ONLY — NOT AUTHORITATIVE
 
-Authoritative source: CONTRACT BREAKPOINT ANALYSIS MASTER v1.2
+Authoritative source: CONTRACT BREAKPOINT ANALYSIS MASTER v1.2.1
 
 If this mirror conflicts with the authoritative source, the authoritative source prevails.
 
@@ -46,7 +46,7 @@ EBA is not credit analysis, a rating, DSCR modelling, a credit decision, a techn
 
 Delivery: written-only.
 
-Commercial structure: single-name read from USD 5,000; facility / portfolio read from USD 12,000. Scope and fee are agreed in writing before work begins.
+Commercial structure: single-name read from USD 4,000; facility / portfolio read from USD 12,000. Scope and fee are agreed in writing before work begins.
 
 Public exposure may state the product name, lender-side category, buyer/use window, structural scope at the approved level of abstraction, output, boundaries, fees and non-prediction rule. It must not expose methodology, taxonomy, scoring, internal reasoning, thresholds or reusable frameworks.
 

@@ -10,6 +10,21 @@ EBP = (ROOT / "execution-breakpoint-protection/index.html").read_text()
 EBA = (ROOT / "earnings-breakpoint-analysis/index.html").read_text()
 
 
+def transport_config(page):
+    return {
+        "endpoint": re.search(r"fetch\('([^']+)'", page).group(1),
+        "access_key": re.search(r"access_key:'([^']+)'", page).group(1),
+        "method": re.search(r"method:'([^']+)'", page).group(1),
+        "content_type": re.search(r"'Content-Type':'([^']+)'", page).group(1),
+        "serialization": "JSON.stringify(payload)" in page,
+        "reply_to": "email:value(" in page,
+    }
+
+
+def provider_confirmed_success(response_ok, data):
+    return response_ok is True and data is not None and data.get("success") is True
+
+
 class Document(HTMLParser):
     def __init__(self):
         super().__init__()
@@ -44,8 +59,14 @@ assert "earnings-breakpoint-analysis" not in EBP.lower()
 
 assert "Earnings Breakpoint Analysis" in EBA
 assert "does not predict whether" in EBA
-assert "from USD 5,000" in EBA and "from USD 12,000" in EBA
+assert "from USD 4,000" in EBA and "from USD 5,000" not in EBA
+assert "from USD 12,000" in EBA
 assert "product:'EBA'" in EBA and "subject:'[EBA REQUEST]'" in EBA
+assert "response.ok===true" in EBA and "data.success===true" in EBA
+assert transport_config(EBA) == transport_config(EBP)
+assert provider_confirmed_success(True, {"success": False}) is False
+assert provider_confirmed_success(True, {"success": True}) is True
+assert provider_confirmed_success(False, {"success": True}) is False
 assert 'href="/"' not in EBA and "execution-breakpoint-protection" not in EBA.lower()
 for phrase in (
     "whether the charter will perform",
