@@ -70,7 +70,7 @@ assert "product:'EBA'" in EBA and "subject:'[EBA REQUEST]'" in EBA
 assert "response.ok===true" in EBA and "data.success===true" in EBA
 assert transport_config(HOME)["access_key"] == "5986f283-7f45-4503-8eba-f1c5bb0a7096"
 assert transport_config(EBP)["access_key"] == "5986f283-7f45-4503-8eba-f1c5bb0a7096"
-assert transport_config(EBA)["access_key"] == "f3a32095-bde6-4618-bf09-e72ec897933c"
+assert transport_config(EBA)["access_key"] == "8a32b785-51c0-4147-a3ad-5b92441589ff"
 for field in ("endpoint", "method", "content_type", "serialization", "reply_to"):
     assert transport_config(EBA)[field] == transport_config(EBP)[field]
 assert provider_confirmed_success(True, {"success": False}) is False

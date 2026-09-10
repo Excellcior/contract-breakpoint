@@ -22,7 +22,7 @@ document.getElementById('eba-submit').addEventListener('click',async function(){
   if(!validEmail(value('eba-email'))){alert('Please enter a valid email address.');return}
   var button=this,success=document.getElementById('eba-success'),error=document.getElementById('eba-error');
   button.disabled=true;button.textContent='Sending...';success.style.display='none';error.style.display='none';
-  var payload={access_key:'f3a32095-bde6-4618-bf09-e72ec897933c',subject:'[EBA REQUEST]',product:'EBA',request_type:'Earnings Breakpoint Analysis',name:value('eba-name'),email:value('eba-email'),firm:value('eba-firm'),'Engagement type':value('eba-type'),'Facility or vessel name':value('eba-facility'),'Deal stage':value('eba-stage'),context:value('eba-context')};
+  var payload={access_key:'8a32b785-51c0-4147-a3ad-5b92441589ff',subject:'[EBA REQUEST]',product:'EBA',request_type:'Earnings Breakpoint Analysis',name:value('eba-name'),email:value('eba-email'),firm:value('eba-firm'),'Engagement type':value('eba-type'),'Facility or vessel name':value('eba-facility'),'Deal stage':value('eba-stage'),context:value('eba-context')};
   try{
     var response=await fetch('https://api.web3forms.com/submit',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});
     var data=await response.json();
