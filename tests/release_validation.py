@@ -13,7 +13,7 @@ EBA = (ROOT / "earnings-breakpoint-analysis/index.html").read_text()
 def transport_config(page):
     return {
         "endpoint": re.search(r"fetch\('([^']+)'", page).group(1),
-        "access_key": re.search(r"access_key:'([^']+)'", page).group(1),
+        "access_key": re.search(r"access_key:\s*'([^']+)'", page).group(1),
         "method": re.search(r"method:'([^']+)'", page).group(1),
         "content_type": re.search(r"'Content-Type':'([^']+)'", page).group(1),
         "serialization": "JSON.stringify(payload)" in page,
@@ -68,7 +68,11 @@ assert "from USD 4,000" in EBA and "from USD 5,000" not in EBA
 assert "from USD 12,000" in EBA
 assert "product:'EBA'" in EBA and "subject:'[EBA REQUEST]'" in EBA
 assert "response.ok===true" in EBA and "data.success===true" in EBA
-assert transport_config(EBA) == transport_config(EBP)
+assert transport_config(HOME)["access_key"] == "5986f283-7f45-4503-8eba-f1c5bb0a7096"
+assert transport_config(EBP)["access_key"] == "5986f283-7f45-4503-8eba-f1c5bb0a7096"
+assert transport_config(EBA)["access_key"] == "f3a32095-bde6-4618-bf09-e72ec897933c"
+for field in ("endpoint", "method", "content_type", "serialization", "reply_to"):
+    assert transport_config(EBA)[field] == transport_config(EBP)[field]
 assert provider_confirmed_success(True, {"success": False}) is False
 assert provider_confirmed_success(True, {"success": True}) is True
 assert provider_confirmed_success(False, {"success": True}) is False
