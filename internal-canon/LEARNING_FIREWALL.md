@@ -1,3 +1,9 @@
+MIRROR ONLY — NOT AUTHORITATIVE
+
+Authoritative source: Learning Firewall — Canonical (CBA + EBP) v1.1
+
+If this mirror conflicts with the authoritative source, the authoritative source prevails.
+
 # CBA / EBP Learning Firewall
 
 Version: 2026-09-10
@@ -11,7 +17,7 @@ A narrow public routing exception exists solely to move a visitor to the tempora
 - CBA may link to EBP only when the contract is already signed.
 - EBP may discreetly link to CBA when the contract is not yet signed.
 
-The exception is navigational only. EBA is not part of it.
+The exception is navigational only. EBA is not part of it and is excluded from the CBA–EBP learning loop.
 
 ## Cross-product justification
 

@@ -1,3 +1,9 @@
+MIRROR ONLY — NOT AUTHORITATIVE
+
+Authoritative source: CONTRACT BREAKPOINT ANALYSIS MASTER v1.2
+
+If this mirror conflicts with the authoritative source, the authoritative source prevails.
+
 # Contract Breakpoint product canon
 
 Version: 2026-09-10
@@ -45,3 +51,5 @@ Commercial structure: single-name read from USD 5,000; facility / portfolio read
 Public exposure may state the product name, lender-side category, buyer/use window, structural scope at the approved level of abstraction, output, boundaries, fees and non-prediction rule. It must not expose methodology, taxonomy, scoring, internal reasoning, thresholds or reusable frameworks.
 
 Public cross-reference: EBA remains isolated. There is no public product cross-reference to or from CBA or EBP, and the products are not publicly described as a family.
+
+The only CBA ↔ EBP public cross-reference exception is temporal routing: CBA may route to EBP only after signature, and EBP may route to CBA only before signature. The exception is navigational only.

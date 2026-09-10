@@ -1,3 +1,9 @@
+MIRROR ONLY — NOT AUTHORITATIVE
+
+Authoritative source: Semantic Firewall — External v1.1
+
+If this mirror conflicts with the authoritative source, the authoritative source prevails.
+
 # External Semantic Firewall
 
 Version: 2026-09-10
@@ -9,6 +15,6 @@ Public cross-reference is prohibited except for temporal routing between CBA and
 - CBA → EBP only where the contract is already signed.
 - EBP → CBA only where the contract is not yet signed.
 
-The exception must remain compressed and navigational. It may not explain methodology, learning, product interdependence or proof.
+The exception must remain compressed and navigational. It may not disclose or explain methodology, learning, product interdependence or proof.
 
 EBA remains publicly isolated from both products. No public family language is permitted.
