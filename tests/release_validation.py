@@ -47,12 +47,12 @@ for path in ROOT.rglob("*.html"):
 
 assert HOME.count('href="/execution-breakpoint-protection/"') == 2
 signed_fields = re.search(r'<div id="signed-fields" style="display:none;">(.*?)</div>\s*</div>', HOME, re.S).group(1)
-assert "not eligible for Contract Breakpoint Analysis" in signed_fields
+assert "not eligible for Contract Breakpoint" in signed_fields
 assert '<a href="/execution-breakpoint-protection/">Continue with Execution Breakpoint Protection &rarr;</a>' in signed_fields
 assert "signedFields.style.display = 'none'" in HOME
 assert "signedFields.style.display = 'block'" in HOME
 assert 'href="/earnings-breakpoint-analysis/"' not in HOME
-assert "€12,000" in HOME and "product: 'CBA'" in HOME
+assert "€12,000" in HOME and "product: 'Contract Breakpoint'" in HOME
 assert "#cep" in HOME and "window.location.replace('/execution-breakpoint-protection/')" in HOME
 
 assert "Execution Breakpoint Protection" in EBP

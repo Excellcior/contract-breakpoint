@@ -1,6 +1,6 @@
 MIRROR ONLY — NOT AUTHORITATIVE
 
-Authoritative source: CONTRACT BREAKPOINT ANALYSIS MASTER v1.2.1
+Authoritative source: CONTRACT BREAKPOINT MASTER v1.2.1
 
 If this mirror conflicts with the authoritative source, the authoritative source prevails.
 
@@ -8,7 +8,7 @@ If this mirror conflicts with the authoritative source, the authoritative source
 
 Version: 2026-09-10
 
-## Contract Breakpoint Analysis (CBA)
+## Contract Breakpoint (CBA)
 
 Pre-signature analysis for one execution-sensitive commercial contract. The canonical fee remains €12,000 fixed fee per contract.
 
