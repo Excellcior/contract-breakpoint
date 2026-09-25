@@ -974,12 +974,15 @@ footer{
 </section>
 <section id="contact" class="section">
   <div class="section-label">
-    CONTRACT BREAKPOINT REQUEST
+    ENQUIRY
   </div>
   <h2>
-    Contract Breakpoint request
+    Enquiry
   </h2>
   <p>
+    Select the option that best describes what you need.
+  </p>
+  <p id="cba-intro" style="display:none;">
     Contract Breakpoint applies to one specific commercial contract before signature. The fixed fee is &euro;12,000, subject to eligibility.
   </p>
   <div class="card">
@@ -1107,6 +1110,7 @@ function checkStage(sel){
   var signedFields = document.getElementById('signed-fields');
   var specificExecutionFields = document.getElementById('specific-execution-fields');
   var identityFields = document.getElementById('contact-identity-fields');
+  var cbaIntro = document.getElementById('cba-intro');
 
   resetMessages();
 
@@ -1119,6 +1123,7 @@ function checkStage(sel){
     signedFields.style.display = 'none';
     specificExecutionFields.style.display = 'none';
     identityFields.style.display = 'block';
+    cbaIntro.style.display = 'block';
 
   } else if(sel.value === 'signed'){
 
@@ -1126,6 +1131,7 @@ function checkStage(sel){
     signedFields.style.display = 'block';
     specificExecutionFields.style.display = 'none';
     identityFields.style.display = 'none';
+    cbaIntro.style.display = 'none';
 
   } else if(sel.value === 'specific_execution_problem'){
 
@@ -1133,6 +1139,7 @@ function checkStage(sel){
     signedFields.style.display = 'none';
     specificExecutionFields.style.display = 'block';
     identityFields.style.display = 'block';
+    cbaIntro.style.display = 'none';
 
   } else {
 
@@ -1140,6 +1147,7 @@ function checkStage(sel){
     signedFields.style.display = 'none';
     specificExecutionFields.style.display = 'none';
     identityFields.style.display = 'block';
+    cbaIntro.style.display = 'none';
   }
 }
 
