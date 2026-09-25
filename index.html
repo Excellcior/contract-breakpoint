@@ -983,7 +983,7 @@ footer{
     Contract Breakpoint applies to one specific commercial contract before signature. The fixed fee is &euro;12,000, subject to eligibility.
   </p>
   <div class="card">
-<div id="cba-identity-fields">
+<div id="contact-identity-fields">
 <div class="field"><label for="name">Name</label><input id="name" type="text" required /></div>
 <div class="field"><label for="email">Work email</label><input id="email" type="email" required /></div>
 <div class="field"><label for="company">Company</label><input id="company" type="text" required /></div>
@@ -1000,6 +1000,11 @@ footer{
     <label class="radio-option">
       <input type="radio" name="stage" value="signed" onchange="checkStage(this)" />
       Already signed
+    </label>
+
+    <label class="radio-option">
+      <input type="radio" name="stage" value="specific_execution_problem" onchange="checkStage(this)" />
+      Specific execution problem
     </label>
   </div>
 </div>
@@ -1024,6 +1029,18 @@ footer{
     This agreement is already signed and is not eligible for Contract Breakpoint.
     <div class="conditions-link"><a href="/execution-breakpoint-protection/">Continue with Execution Breakpoint Protection &rarr;</a></div>
   </div>
+</div>
+
+<div id="specific-execution-fields" style="display:none;">
+  <div class="field">
+    <label for="specific-execution-problem">What would you like examined?</label>
+    <textarea id="specific-execution-problem" required></textarea>
+    <div class="field-helper">Briefly describe the contract, transaction or execution problem.</div>
+  </div>
+
+  <button class="submit" id="submit-specific-execution-btn" onclick="submitSpecificExecutionForm()">
+    Send enquiry
+  </button>
 </div>
 
 <div class="success-msg" id="success-msg">
@@ -1088,28 +1105,40 @@ function checkStage(sel){
 
   var beforeFields = document.getElementById('before-fields');
   var signedFields = document.getElementById('signed-fields');
-  var identityFields = document.getElementById('cba-identity-fields');
+  var specificExecutionFields = document.getElementById('specific-execution-fields');
+  var identityFields = document.getElementById('contact-identity-fields');
 
   resetMessages();
 
   document.getElementById('submit-before-btn').style.display = '';
+  document.getElementById('submit-specific-execution-btn').style.display = '';
 
   if(sel.value === 'before'){
 
     beforeFields.style.display = 'block';
     signedFields.style.display = 'none';
+    specificExecutionFields.style.display = 'none';
     identityFields.style.display = 'block';
 
   } else if(sel.value === 'signed'){
 
     beforeFields.style.display = 'none';
     signedFields.style.display = 'block';
+    specificExecutionFields.style.display = 'none';
     identityFields.style.display = 'none';
+
+  } else if(sel.value === 'specific_execution_problem'){
+
+    beforeFields.style.display = 'none';
+    signedFields.style.display = 'none';
+    specificExecutionFields.style.display = 'block';
+    identityFields.style.display = 'block';
 
   } else {
 
     beforeFields.style.display = 'none';
     signedFields.style.display = 'none';
+    specificExecutionFields.style.display = 'none';
     identityFields.style.display = 'block';
   }
 }
@@ -1191,6 +1220,40 @@ async function submitBeforeForm(){
     data,
     'submit-before-btn',
     'Request received. If the contract is eligible for Contract Breakpoint, you will receive a written response.'
+  );
+}
+
+async function submitSpecificExecutionForm(){
+
+  var name = v('name');
+  var email = v('email');
+  var company = v('company');
+  var problem = v('specific-execution-problem');
+
+  if(!name || !email || !company || !problem){
+    alert('Please complete all required fields.');
+    return;
+  }
+
+  if(!isValidEmail(email)){
+    alert('Please enter a valid email address.');
+    return;
+  }
+
+  var data = {
+    access_key: '5986f283-7f45-4503-8eba-f1c5bb0a7096',
+    subject: '[SPECIFIC EXECUTION PROBLEM]',
+    enquiry_type: 'specific_execution_problem',
+    email: email,
+    name: name,
+    company: company,
+    enquiry: problem
+  };
+
+  await sendSubmission(
+    data,
+    'submit-specific-execution-btn',
+    'I\u2019ll review the enquiry and reply personally if there is a useful next step.'
   );
 }
 </script>

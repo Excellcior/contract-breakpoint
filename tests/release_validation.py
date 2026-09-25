@@ -51,6 +51,12 @@ assert "not eligible for Contract Breakpoint" in signed_fields
 assert '<a href="/execution-breakpoint-protection/">Continue with Execution Breakpoint Protection &rarr;</a>' in signed_fields
 assert "signedFields.style.display = 'none'" in HOME
 assert "signedFields.style.display = 'block'" in HOME
+assert 'value="specific_execution_problem"' in HOME
+assert "What would you like examined?" in HOME
+assert "Briefly describe the contract, transaction or execution problem." in HOME
+assert "Send enquiry" in HOME
+assert "enquiry_type: 'specific_execution_problem'" in HOME
+assert "I\\u2019ll review the enquiry and reply personally if there is a useful next step." in HOME
 assert 'href="/earnings-breakpoint-analysis/"' not in HOME
 assert "€12,000" in HOME and "product: 'Contract Breakpoint'" in HOME
 assert "#cep" in HOME and "window.location.replace('/execution-breakpoint-protection/')" in HOME
