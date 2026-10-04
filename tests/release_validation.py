@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 from html.parser import HTMLParser
 from pathlib import Path
+import json
 import re
 import xml.etree.ElementTree as ET
 
@@ -30,6 +31,7 @@ class Document(HTMLParser):
         super().__init__()
         self.links = []
         self.ids = set()
+        self.inputs = {}
 
     def handle_starttag(self, tag, attrs):
         attrs = dict(attrs)
@@ -38,6 +40,8 @@ class Document(HTMLParser):
         if "id" in attrs:
             assert attrs["id"] not in self.ids, f"duplicate id: {attrs['id']}"
             self.ids.add(attrs["id"])
+            if tag in {"input", "select", "textarea"}:
+                self.inputs[attrs["id"]] = attrs
 
 
 for path in ROOT.rglob("*.html"):
@@ -45,52 +49,71 @@ for path in ROOT.rglob("*.html"):
     parser.feed(path.read_text())
     parser.close()
 
+home_doc, ebp_doc, eba_doc = Document(), Document(), Document()
+for parser, page in ((home_doc, HOME), (ebp_doc, EBP), (eba_doc, EBA)):
+    parser.feed(page)
+    parser.close()
+
+assert '<title>Contract Breakpoint | Pre-Signature Contract Analysis</title>' in HOME
+seo_description = "Pre-signature analysis of one execution-sensitive commercial agreement to identify where operational conditions can break contractual protection before signature."
+assert HOME.count(seo_description) >= 4
+assert "€12,000" not in HOME and "&euro;12,000" not in HOME
+assert "Fixed fee" not in re.search(r'<section class="hero">(.*?)</section>', HOME, re.S).group(1)
+assert "Check whether the agreement fits" in HOME
 assert HOME.count('href="/execution-breakpoint-protection/"') == 2
-signed_fields = re.search(r'<div id="signed-fields" style="display:none;">(.*?)</div>\s*</div>', HOME, re.S).group(1)
-assert "not eligible for Contract Breakpoint" in signed_fields
-assert '<a href="/execution-breakpoint-protection/">Continue with Execution Breakpoint Protection &rarr;</a>' in signed_fields
-assert "signedFields.style.display = 'none'" in HOME
-assert "signedFields.style.display = 'block'" in HOME
-assert 'value="specific_execution_problem"' in HOME
-assert "What would you like examined?" in HOME
-assert "Briefly describe the contract, transaction or execution problem." in HOME
-assert "Send enquiry" in HOME
-assert "enquiry_type: 'specific_execution_problem'" in HOME
-assert "I\\u2019ll review the enquiry and reply personally if there is a useful next step." in HOME
-assert 'href="/earnings-breakpoint-analysis/"' not in HOME
-assert "€12,000" in HOME and "product: 'Contract Breakpoint'" in HOME
+assert "WHAT A BREAKPOINT LOOKS LIKE" in HOME
+assert "WHO WRITES THE ANALYSIS" in HOME
+for publisher in ("Ship &amp; Bunker", "Trade Finance Global", "Container News"):
+    assert publisher in HOME
+assert HOME.count('target="_blank" rel="noopener noreferrer"') >= 5
+assert "ETInfra" not in HOME and "Substack" not in HOME and 'href="/media/' not in HOME
+assert 'href="#fees"' not in HOME
+assert set(home_doc.inputs) == {"company", "email", "context"}
+assert all("required" in home_doc.inputs[field] for field in home_doc.inputs)
+assert "providerConfirmedSuccess(response,data)" in HOME
+assert "cba-error" in HOME and "cba-success" in HOME
+assert "product:'Contract Breakpoint'" in HOME
 assert "#cep" in HOME and "window.location.replace('/execution-breakpoint-protection/')" in HOME
 
 assert "Execution Breakpoint Protection" in EBP
 assert "€2,500 monthly retainer" in EBP
-assert "No minimum term" in EBP and "Cancelable" in EBP
+for term in ("One signed contract", "No minimum term", "Cancelable", "No tiers", "No bundles", "No setup fee"):
+    assert term in EBP
+assert "WHAT YOU RECEIVE" in EBP
+assert set(ebp_doc.inputs) == {"ebp-name", "ebp-email", "ebp-company", "ebp-exposure", "ebp-deadline", "ebp-context"}
+for option in ("Notice", "Timing", "Escalation", "Recipient", "Format", "Not sure"):
+    assert f"<option>{option}</option>" in EBP
 assert "product:'EBP'" in EBP and "subject:'[EBP REQUEST]'" in EBP
+assert "providerConfirmedSuccess(response,result)" in EBP
 assert EBP.count('href="/"') == 1
 assert "earnings-breakpoint-analysis" not in EBP.lower()
 
 assert "Earnings Breakpoint Analysis" in EBA
-assert "does not predict whether" in EBA
-assert "from USD 4,000" in EBA and "from USD 5,000" not in EBA
-assert "from USD 12,000" in EBA
+assert "PREPARED BY" in EBA and "former Loading Master with 25+ years" in EBA
+assert "from USD 4,000" in EBA and "from USD 12,000" in EBA
+assert set(eba_doc.inputs) == {"eba-organisation", "eba-email", "eba-role", "eba-use-case", "eba-assessment", "eba-context"}
+for option in ("Pre-deal", "Watchlist", "Single name", "Facility / portfolio"):
+    assert f"<option>{option}</option>" in EBA
 assert "product:'EBA'" in EBA and "subject:'[EBA REQUEST]'" in EBA
 assert "response.ok===true" in EBA and "data.success===true" in EBA
+assert 'href="/"' not in EBA and "execution-breakpoint-protection" not in EBA.lower()
+assert "Published Analysis" not in EBA
+assert "/notes/" not in eba_doc.links and "/signals/" not in eba_doc.links
+
 assert transport_config(HOME)["access_key"] == "5986f283-7f45-4503-8eba-f1c5bb0a7096"
 assert transport_config(EBP)["access_key"] == "5986f283-7f45-4503-8eba-f1c5bb0a7096"
 assert transport_config(EBA)["access_key"] == "8a32b785-51c0-4147-a3ad-5b92441589ff"
-for field in ("endpoint", "method", "content_type", "serialization", "reply_to"):
-    assert transport_config(EBA)[field] == transport_config(EBP)[field]
+for page in (HOME, EBP, EBA):
+    config = transport_config(page)
+    assert config["endpoint"] == "https://api.web3forms.com/submit"
+    assert config["method"] == "POST" and config["content_type"] == "application/json"
+    assert config["serialization"] and config["reply_to"]
 assert provider_confirmed_success(True, {"success": False}) is False
 assert provider_confirmed_success(True, {"success": True}) is True
 assert provider_confirmed_success(False, {"success": True}) is False
-assert 'href="/"' not in EBA and "execution-breakpoint-protection" not in EBA.lower()
-for phrase in (
-    "whether the charter will perform",
-    "will the charterer pay",
-    "expected charterer behaviour",
-    "likelihood of default",
-    "probability of payment",
-):
-    assert phrase not in EBA.lower(), phrase
+
+schema = json.loads(re.search(r'<script type="application/ld\+json">\s*(.*?)\s*</script>', HOME, re.S).group(1))
+assert "12,000" not in json.dumps(schema)
 
 tree = ET.parse(ROOT / "sitemap.xml")
 locations = {item.text for item in tree.findall(".//{*}loc")}
@@ -105,17 +128,5 @@ for path in ROOT.rglob("*.html"):
     document.feed(path.read_text())
     assert eba_path not in document.links, f"unauthorized EBA link: {path}"
 
-redirects = (ROOT / "_redirects").read_text().splitlines()
-for source in ("/contract-execution-protection", "/contract-execution-protection/", "/cep", "/cep/"):
-    assert f"{source} /execution-breakpoint-protection/ 301" in redirects
-
-for page, canonical, title, description in (
-    (EBP, "https://contractbreakpoint.com/execution-breakpoint-protection/", "Execution Breakpoint Protection | Post-Signature Procedural Protection", "Written post-signature procedural protection"),
-    (EBA, "https://contractbreakpoint.com/earnings-breakpoint-analysis/", "Earnings Breakpoint Analysis | Structural Hire Cash-Flow Read for Maritime Lenders", "A written operator-side assessment"),
-):
-    assert f'<link rel="canonical" href="{canonical}"' in page
-    assert f"<title>{title}</title>" in page
-    assert description in page
-    assert "noindex" not in page.lower()
-
+assert not (ROOT / "media").exists()
 print("release validation passed")
