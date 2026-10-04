@@ -85,12 +85,14 @@ for option in ("Notice", "Timing", "Escalation", "Recipient", "Format", "Not sur
     assert f"<option>{option}</option>" in EBP
 assert "product:'EBP'" in EBP and "subject:'[EBP REQUEST]'" in EBP
 assert "providerConfirmedSuccess(response,result)" in EBP
-assert EBP.count('href="/"') == 1
+assert EBP.count('href="https://contractbreakpoint.com/"') == 1
+for removed_link in ('href="/about/"', 'href="/notes/"', 'href="/signals/"'):
+    assert removed_link not in EBP
 assert "earnings-breakpoint-analysis" not in EBP.lower()
 
 assert "Earnings Breakpoint Analysis" in EBA
 assert "PREPARED BY" in EBA and "former Loading Master with 25+ years" in EBA
-assert "from USD 4,000" in EBA and "from USD 12,000" in EBA
+assert "Single-name read from USD 4,000" in EBA and "Facility / portfolio read from USD 12,000" in EBA
 assert set(eba_doc.inputs) == {"eba-organisation", "eba-email", "eba-role", "eba-use-case", "eba-assessment", "eba-context"}
 for option in ("Pre-deal", "Watchlist", "Single name", "Facility / portfolio"):
     assert f"<option>{option}</option>" in EBA
@@ -99,6 +101,11 @@ assert "response.ok===true" in EBA and "data.success===true" in EBA
 assert 'href="/"' not in EBA and "execution-breakpoint-protection" not in EBA.lower()
 assert "Published Analysis" not in EBA
 assert "/notes/" not in eba_doc.links and "/signals/" not in eba_doc.links
+for removed_copy in ("operator-side", "before the deterioration appears in the DSCR", "Maritime credit covers the iron and the paper. Rarely the charter.", "Priced against the exposure, not the hours.", "hugo@contractbreakpoint.com"):
+    assert removed_copy not in EBA
+assert "LENDER-SIDE STRUCTURAL EXECUTION ANALYSIS" in EBA
+assert "EBA assesses structural exposure, not probability." in EBA
+assert "hugofhernandez@protonmail.com" in EBA
 
 assert transport_config(HOME)["access_key"] == "5986f283-7f45-4503-8eba-f1c5bb0a7096"
 assert transport_config(EBP)["access_key"] == "5986f283-7f45-4503-8eba-f1c5bb0a7096"
