@@ -3,7 +3,7 @@ import fs from 'node:fs';
 import vm from 'node:vm';
 
 const cases = [
-  {path: 'index.html', button: 'cba-submit', success: 'cba-success', error: 'cba-error', values: {company: 'Example Co', email: 'buyer@example.com', context: 'A draft supply agreement.'}, product: 'Contract Breakpoint'},
+  {path: 'index.html', button: 'cba-submit', success: 'cba-success', error: 'cba-error', values: {name: 'Buyer', company: 'Example Co', email: 'buyer@example.com', context: 'A draft supply agreement.'}, product: 'Contract Breakpoint'},
   {path: 'execution-breakpoint-protection/index.html', button: 'ebp-submit', success: 'ebp-success', error: 'ebp-error', values: {'ebp-name': 'Buyer', 'ebp-email': 'buyer@example.com', 'ebp-company': 'Example Co', 'ebp-exposure': 'Notice', 'ebp-deadline': '', 'ebp-context': 'Notice is due shortly.'}, product: 'EBP'},
   {path: 'earnings-breakpoint-analysis/index.html', button: 'eba-submit', success: 'eba-success', error: 'eba-error', values: {'eba-organisation': 'Example Fund', 'eba-email': 'credit@example.com', 'eba-role': 'Credit director', 'eba-use-case': 'Pre-deal', 'eba-assessment': 'Single name', 'eba-context': 'Reviewing charter-backed cash flow.'}, product: 'EBA'},
 ];
@@ -34,6 +34,7 @@ async function exercise(testCase, accepted) {
   await listener.call(elements[testCase.button]);
   assert.equal(payload.product, testCase.product);
   assert.equal(payload.email, testCase.values.email ?? testCase.values['ebp-email'] ?? testCase.values['eba-email']);
+  if (testCase.product === 'Contract Breakpoint') assert.equal(payload.name, 'Buyer');
   assert.equal(elements[testCase.success].style.display, accepted ? 'block' : 'none');
   assert.equal(elements[testCase.error].style.display, accepted ? 'none' : 'block');
   assert.equal(elements[testCase.button].disabled, accepted);

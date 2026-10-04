@@ -60,6 +60,9 @@ assert HOME.count(seo_description) >= 4
 assert "€12,000" not in HOME and "&euro;12,000" not in HOME
 assert "Fixed fee" not in re.search(r'<section class="hero">(.*?)</section>', HOME, re.S).group(1)
 assert "Check whether the agreement fits" in HOME
+assert "MATERIAL EXECUTION EXPOSURE" in HOME
+assert "EXECUTION-SENSITIVE</div>" not in HOME and "MATERIAL EXPOSURE</div>" not in HOME
+assert "Contractual protection can depend on information, timing and notice working in the same operational sequence." in HOME
 assert HOME.count('href="/execution-breakpoint-protection/"') == 2
 assert "WHAT A BREAKPOINT LOOKS LIKE" in HOME
 assert "WHO WRITES THE ANALYSIS" in HOME
@@ -68,11 +71,13 @@ for publisher in ("Ship &amp; Bunker", "Trade Finance Global", "Container News")
 assert HOME.count('target="_blank" rel="noopener noreferrer"') >= 5
 assert "ETInfra" not in HOME and "Substack" not in HOME and 'href="/media/' not in HOME
 assert 'href="#fees"' not in HOME
-assert set(home_doc.inputs) == {"company", "email", "context"}
-assert all("required" in home_doc.inputs[field] for field in home_doc.inputs)
+assert set(home_doc.inputs) == {"name", "company", "email", "context"}
+assert "required" not in home_doc.inputs["name"]
+assert all("required" in home_doc.inputs[field] for field in ("company", "email", "context"))
 assert "providerConfirmedSuccess(response,data)" in HOME
 assert "cba-error" in HOME and "cba-success" in HOME
 assert "product:'Contract Breakpoint'" in HOME
+assert "name:value('name')||'Website enquiry'" in HOME
 assert "#cep" in HOME and "window.location.replace('/execution-breakpoint-protection/')" in HOME
 
 assert "Execution Breakpoint Protection" in EBP
