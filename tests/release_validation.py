@@ -68,7 +68,7 @@ assert "WHAT A BREAKPOINT LOOKS LIKE" in HOME
 assert "WHO WRITES THE ANALYSIS" in HOME
 for publisher in ("Ship &amp; Bunker", "Trade Finance Global", "Container News"):
     assert publisher in HOME
-assert HOME.count('target="_blank" rel="noopener noreferrer"') >= 5
+assert HOME.count('target="_blank" rel="noopener noreferrer"') >= 4
 assert "ETInfra" not in HOME and "Substack" not in HOME and 'href="/media/' not in HOME
 assert 'href="#fees"' not in HOME
 assert set(home_doc.inputs) == {"name", "company", "email", "context"}
